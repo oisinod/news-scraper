@@ -22,9 +22,9 @@ jobs:
           node-version: 22
       - name: Fetch feeds
         env:
-          ARCHIVE_VERIFY: "0"
+          ARCHIVE_VERIFY: "1"
         run: node scripts/fetch-feeds.mjs
-        timeout-minutes: 15
+        timeout-minutes: 45
       - name: Commit changes
         run: |
           if git diff --quiet -- articles.json; then

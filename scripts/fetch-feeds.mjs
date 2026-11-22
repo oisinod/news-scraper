@@ -4,7 +4,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { mapPool, probeReadableProviders } from "./read-providers.mjs";
+import { mapPool, probeArchiveIs } from "./archive-probe.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "articles.json");
@@ -53,7 +53,7 @@ const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
 const RETENTION_DAYS = Number(process.env.RETENTION_DAYS ?? 14);
 const MAX_ARTICLES = 400;
 const MAX_ITEMS_PER_FEED = 35;
-// Drop items without a readable mirror only when "1". Default: show full feed.
+// Drop paywalled items with no archive.is snapshot when enabled (on in CI).
 const ARCHIVE_VERIFY = process.env.ARCHIVE_VERIFY === "1";
 // When verify is off, optionally probe in the background to improve readUrl (slow).
 const ARCHIVE_ENRICH = process.env.ARCHIVE_ENRICH === "1";
@@ -189,7 +189,7 @@ async function applyArchiveChecks(articles) {
     paid,
     ARCHIVE_PROBE_CONCURRENCY,
     ARCHIVE_PROBE_DELAY_MS,
-    (article) => probeReadableProviders(article.url, article.title),
+    (article) => probeArchiveIs(article.url),
   );
 
   let verified = 0;
@@ -208,7 +208,7 @@ async function applyArchiveChecks(articles) {
           snapshotUrl: hit.snapshotUrl,
         });
       }
-      if (ARCHIVE_VERIFY) {
+      if (ARCHIVE_VERIFY && hit.ok === false) {
         dropped++;
         return null;
       }
@@ -217,9 +217,11 @@ async function applyArchiveChecks(articles) {
     .filter(Boolean);
 
   if (ARCHIVE_VERIFY) {
-    console.log(`Read verify: ${verified} ok, ${dropped} hidden, ${out.filter((a) => a.free).length} free`);
-  } else {
-    console.log(`Read enrich: ${verified} mirrors for ${paid.length} paywalled items`);
+    console.log(
+      `archive.is verify: ${verified} kept, ${dropped} hidden (no snapshot), ${out.filter((a) => a.free).length} free`,
+    );
+  } else if (ARCHIVE_ENRICH) {
+    console.log(`archive.is enrich: ${verified} snapshots for ${paid.length} paywalled items`);
   }
   return sortByTime(out);
 }

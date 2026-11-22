@@ -20,7 +20,7 @@ function parseTimemap(body) {
 }
 
 /** @returns {Promise<ArchiveHit | ArchiveMiss | ArchiveUnknown>} */
-async function probeArchiveIs(articleUrl) {
+export async function probeArchiveIs(articleUrl) {
   const timemapUrl = `https://${ARCHIVE_HOST}/timemap/${articleUrl}`;
   try {
     const res = await fetch(timemapUrl, {
