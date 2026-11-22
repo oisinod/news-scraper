@@ -2,49 +2,211 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZEIT Schlagzeilen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <title>ZEIT &amp; KSTA – Schlagzeilen</title>
     <style>
-      :root { color-scheme: light dark; --muted: #6b7280; --border: #e5e7eb; }
-      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 1rem; }
-      header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
-      h1 { margin: 0; font-size: 1.4rem; }
-      #updated { color: var(--muted); font-size: .85rem; }
-      #filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0; }
-      #filters button { border: 1px solid var(--border); background: none; color: inherit; border-radius: 999px; padding: .2rem .8rem; cursor: pointer; font: inherit; font-size: .85rem; }
-      #filters button[aria-pressed="true"] { background: #111; color: #fff; border-color: #111; }
-      ul { list-style: none; padding: 0; margin: 0; }
-      li { padding: .8rem 0; border-bottom: 1px solid var(--border); }
-      li a { color: inherit; font-weight: 600; text-decoration: none; }
-      li a:hover { text-decoration: underline; }
-      .meta { color: var(--muted); font-size: .8rem; }
-      .links { font-size: .8rem; margin-top: .15rem; }
-      .links a { color: var(--muted); font-weight: 400; margin-right: .8rem; }
-      .summary { margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
+      :root {
+        color-scheme: light dark;
+        --bg: #f4f4f5;
+        --card: #fff;
+        --text: #111;
+        --muted: #5c6370;
+        --border: #e2e5ea;
+        --chip: #fff;
+        --chip-active: #111;
+        --chip-active-text: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0a0a0a;
+          --card: #171717;
+          --text: #f5f5f5;
+          --muted: #a1a1aa;
+          --border: #2e2e2e;
+          --chip: #262626;
+          --chip-active: #fafafa;
+          --chip-active-text: #111;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font: 1.0625rem/1.45 system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right))
+          max(1.25rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+        -webkit-text-size-adjust: 100%;
+      }
+      .wrap { max-width: 42rem; margin: 0 auto; }
+      header h1 { margin: 0; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+      #updated { display: block; margin-top: 0.25rem; color: var(--muted); font-size: 0.8125rem; }
+      .filter-block { margin: 1rem 0 0.5rem; }
+      .filter-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin: 0 0 0.35rem 0.15rem;
+      }
+      .chips {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .chips::-webkit-scrollbar { display: none; }
+      .chips button {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        min-height: 2.75rem;
+        padding: 0.45rem 0.95rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--chip);
+        color: inherit;
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        touch-action: manipulation;
+        white-space: nowrap;
+      }
+      .chips button[aria-pressed="true"] {
+        background: var(--chip-active);
+        color: var(--chip-active-text);
+        border-color: var(--chip-active);
+      }
+      .chips button img { display: block; height: 1.125rem; width: auto; }
+      .chips button[aria-pressed="true"] img.zeit-inv,
+      .chips button[aria-pressed="true"] img.ksta-inv { filter: brightness(0) invert(1); }
+      @media (prefers-color-scheme: dark) {
+        .chips button[aria-pressed="true"] img.zeit-inv,
+        .chips button[aria-pressed="true"] img.ksta-inv { filter: brightness(0); }
+      }
+      ul { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+      li {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 0.85rem 1rem;
+      }
+      .row-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+      .row-top img { height: 1.375rem; width: auto; display: block; }
+      .title {
+        display: block;
+        color: inherit;
+        font-weight: 650;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        text-decoration: none;
+      }
+      .title:active { opacity: 0.85; }
+      .meta { color: var(--muted); font-size: 0.8125rem; line-height: 1.3; }
+      .sub-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        margin-top: 0.45rem;
+        font-size: 0.8125rem;
+      }
+      .sub-links a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+      .summary { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.9375rem; line-height: 1.4; }
+      .badge-free {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #15803d;
+        background: #dcfce7;
+        padding: 0.1rem 0.35rem;
+        border-radius: 4px;
+      }
+      @media (prefers-color-scheme: dark) {
+        .badge-free { color: #86efac; background: #14532d; }
+      }
+      .empty { padding: 2rem 1rem; text-align: center; color: var(--muted); }
     </style>
   </head>
   <body>
-    <header>
-      <h1>ZEIT Schlagzeilen</h1>
-      <span id="updated"></span>
-    </header>
-    <div id="filters"></div>
-    <ul id="list"><li>Lade …</li></ul>
+    <div class="wrap">
+      <header>
+        <h1>Schlagzeilen</h1>
+        <span id="updated"></span>
+      </header>
+      <div class="filter-block">
+        <p class="filter-label">Quelle</p>
+        <div id="source-filters" class="chips" role="group" aria-label="Quelle"></div>
+      </div>
+      <div class="filter-block">
+        <p class="filter-label">Ressort</p>
+        <div id="section-filters" class="chips" role="group" aria-label="Ressort"></div>
+      </div>
+      <ul id="list"><li class="empty">Lade …</li></ul>
+    </div>
 
     <script>
       const listEl = document.getElementById("list");
-      const filtersEl = document.getElementById("filters");
+      const sourceFiltersEl = document.getElementById("source-filters");
+      const sectionFiltersEl = document.getElementById("section-filters");
       const fmt = new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" });
+      let sources = {};
       let articles = [];
-      let active = "Alle";
+      let activeSource = "all";
+      let activeSection = "Alle";
 
-      function render() {
-        const shown = active === "Alle" ? articles : articles.filter((a) => a.section === active);
+      const logoClass = (id) => (id === "zeit" ? "zeit-inv" : id === "ksta" ? "ksta-inv" : "");
+
+      function filtered() {
+        return articles.filter((a) => {
+          if (activeSource !== "all" && a.source !== activeSource) return false;
+          if (activeSection !== "Alle" && a.section !== activeSection) return false;
+          return true;
+        });
+      }
+
+      function sectionOptions() {
+        const pool =
+          activeSource === "all" ? articles : articles.filter((a) => a.source === activeSource);
+        return ["Alle", ...new Set(pool.map((a) => a.section).filter(Boolean)).values()].sort((a, b) =>
+          a === "Alle" ? -1 : b === "Alle" ? 1 : a.localeCompare(b, "de"),
+        );
+      }
+
+      function renderList() {
+        const shown = filtered();
+        if (!shown.length) {
+          listEl.innerHTML = '<li class="empty">Keine Artikel für diese Filter.</li>';
+          return;
+        }
         listEl.replaceChildren(
           ...shown.map((a) => {
             const li = document.createElement("li");
+            const src = sources[a.source];
+            const top = document.createElement("div");
+            top.className = "row-top";
+            const img = document.createElement("img");
+            img.src = src.logo;
+            img.alt = src.name;
+            img.width = 72;
+            img.height = 18;
+            img.loading = "lazy";
+            top.append(img);
+            if (a.free) {
+              const b = document.createElement("span");
+              b.className = "badge-free";
+              b.textContent = "Frei";
+              top.append(b);
+            }
             const link = document.createElement("a");
-            link.href = a.readUrl; // built by the fetch script, only followed on user click
+            link.className = "title";
+            link.href = a.readUrl;
             link.target = "_blank";
             link.rel = "noopener noreferrer";
             link.textContent = a.title;
@@ -53,20 +215,20 @@
             meta.textContent = [a.section, a.publishedAt && fmt.format(new Date(a.publishedAt))]
               .filter(Boolean)
               .join(" · ");
-            const links = document.createElement("div");
-            links.className = "links";
-            const extra = a.free
+            const sub = document.createElement("div");
+            sub.className = "sub-links";
+            const extras = a.free
               ? [["Archiv", a.archiveUrl]]
               : [["Original", a.url], ["Neu archivieren", a.saveUrl]];
-            for (const [label, href] of extra) {
+            for (const [label, href] of extras) {
               const x = document.createElement("a");
               x.href = href;
               x.target = "_blank";
               x.rel = "noopener noreferrer";
               x.textContent = label;
-              links.append(x);
+              sub.append(x);
             }
-            li.append(link, meta, links);
+            li.append(top, link, meta, sub);
             if (a.summary) {
               const p = document.createElement("p");
               p.className = "summary";
@@ -78,14 +240,50 @@
         );
       }
 
-      function renderFilters() {
-        const sections = ["Alle", ...new Set(articles.map((a) => a.section))];
-        filtersEl.replaceChildren(
+      function renderSourceFilters() {
+        const items = [
+          { id: "all", label: "Alle" },
+          ...Object.entries(sources).map(([id, s]) => ({ id, label: s.shortName, logo: s.logo })),
+        ];
+        sourceFiltersEl.replaceChildren(
+          ...items.map(({ id, label, logo }) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.setAttribute("aria-pressed", String(id === activeSource));
+            if (logo) {
+              const img = document.createElement("img");
+              img.src = logo;
+              img.alt = "";
+              img.className = logoClass(id);
+              b.append(img);
+            }
+            b.append(label);
+            b.onclick = () => {
+              activeSource = id;
+              activeSection = "Alle";
+              renderSourceFilters();
+              renderSectionFilters();
+              renderList();
+            };
+            return b;
+          }),
+        );
+      }
+
+      function renderSectionFilters() {
+        const sections = sectionOptions();
+        if (!sections.includes(activeSection)) activeSection = "Alle";
+        sectionFiltersEl.replaceChildren(
           ...sections.map((s) => {
             const b = document.createElement("button");
+            b.type = "button";
             b.textContent = s;
-            b.setAttribute("aria-pressed", String(s === active));
-            b.onclick = () => { active = s; renderFilters(); render(); };
+            b.setAttribute("aria-pressed", String(s === activeSection));
+            b.onclick = () => {
+              activeSection = s;
+              renderSectionFilters();
+              renderList();
+            };
             return b;
           }),
         );
@@ -94,13 +292,17 @@
       fetch("articles.json", { cache: "no-cache" })
         .then((r) => r.json())
         .then((data) => {
-          articles = data.articles;
+          sources = data.sources ?? {};
+          articles = data.articles ?? [];
           document.getElementById("updated").textContent =
             "Aktualisiert: " + fmt.format(new Date(data.updatedAt));
-          renderFilters();
-          render();
+          renderSourceFilters();
+          renderSectionFilters();
+          renderList();
         })
-        .catch(() => { listEl.innerHTML = "<li>Artikel konnten nicht geladen werden.</li>"; });
+        .catch(() => {
+          listEl.innerHTML = '<li class="empty">Artikel konnten nicht geladen werden.</li>';
+        });
     </script>
   </body>
 </html>

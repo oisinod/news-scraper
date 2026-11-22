@@ -1,8 +1,5 @@
-// Fetches public zeit.de RSS feeds and writes articles.json.
+// Fetches public RSS feeds (ZEIT, KSTA) and writes articles.json.
 // Zero dependencies; requires Node 18+ (global fetch).
-//
-// Only metadata (title, summary, link, date, section) is stored.
-// Article content is never fetched or stored.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -11,42 +8,44 @@ import { dirname, join } from "node:path";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "articles.json");
 
-const FEEDS = [
-  { name: "Alle", url: "https://newsfeed.zeit.de/index" },
-  { name: "Politik", url: "https://newsfeed.zeit.de/politik/index" },
-  { name: "Wirtschaft", url: "https://newsfeed.zeit.de/wirtschaft/index" },
-  { name: "Gesellschaft", url: "https://newsfeed.zeit.de/gesellschaft/index" },
-  { name: "Digital", url: "https://newsfeed.zeit.de/digital/index" },
-  { name: "Entdecken", url: "https://newsfeed.zeit.de/entdecken/index" },
-  { name: "Sport", url: "https://newsfeed.zeit.de/sport/index" },
-];
-
-// byebyepaywall.com is a launcher for third-party services and has no deep-link
-// scheme of its own, so the prefix of the chosen service is prepended to the URL.
-// Override via env var BYPASS_PREFIX.
-const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
-// Asks the archive service to snapshot a URL that nobody has archived yet.
-const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
-
-// zeit.de has no free/paywalled flag in the feed and blocks scripted page requests,
-// so detect by URL: agency wire reports (/news/) and videos are always free.
-const isFree = (url) => /^\/(news|video)\//.test(new URL(url).pathname);
-
-// Derived links; recomputed on every run so config changes apply to retained items.
-const withLinks = (a) => {
-  const free = isFree(a.url);
-  const archiveUrl = BYPASS_PREFIX + a.url;
-  return {
-    ...a,
-    free,
-    archiveUrl,
-    saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
-    readUrl: free ? a.url : archiveUrl, // primary link for the headline
-  };
+const SOURCES = {
+  zeit: {
+    name: "DIE ZEIT",
+    shortName: "ZEIT",
+    logo: "assets/zeit.svg",
+    home: "https://www.zeit.de/",
+  },
+  ksta: {
+    name: "Kölner Stadt-Anzeiger",
+    shortName: "KSTA",
+    logo: "assets/ksta.svg",
+    home: "https://www.ksta.de/",
+  },
 };
 
+const FEEDS = [
+  { source: "zeit", section: "News", url: "https://newsfeed.zeit.de/index" },
+  { source: "zeit", section: "Politik", url: "https://newsfeed.zeit.de/politik/index" },
+  { source: "zeit", section: "Wirtschaft", url: "https://newsfeed.zeit.de/wirtschaft/index" },
+  { source: "zeit", section: "Gesellschaft", url: "https://newsfeed.zeit.de/gesellschaft/index" },
+  { source: "zeit", section: "Digital", url: "https://newsfeed.zeit.de/digital/index" },
+  { source: "zeit", section: "Entdecken", url: "https://newsfeed.zeit.de/entdecken/index" },
+  { source: "zeit", section: "Sport", url: "https://newsfeed.zeit.de/sport/index" },
+  { source: "ksta", section: "Panorama", url: "https://feed.ksta.de/feed/rss/panorama/index.rss" },
+  { source: "ksta", section: "Politik", url: "https://feed.ksta.de/feed/rss/politik/index.rss" },
+  { source: "ksta", section: "Wirtschaft", url: "https://feed.ksta.de/feed/rss/wirtschaft/index.rss" },
+  { source: "ksta", section: "Sport", url: "https://feed.ksta.de/feed/rss/sport/index.rss" },
+  { source: "ksta", section: "Kultur", url: "https://feed.ksta.de/feed/rss/kultur-medien/index.rss" },
+  { source: "ksta", section: "Köln", url: "https://feed.ksta.de/feed/rss/koeln/koelner-innenstadt/index.rss" },
+  { source: "ksta", section: "Region", url: "https://feed.ksta.de/feed/rss/region/rhein-erft/index.rss" },
+];
+
+const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
+const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
+
 const RETENTION_DAYS = 7;
-const MAX_ARTICLES = 300;
+const MAX_ARTICLES = 400;
+const MAX_ITEMS_PER_FEED = 35;
 
 const decodeEntities = (s) =>
   s
@@ -66,14 +65,47 @@ function tag(xml, name) {
   return (cdata ? cdata[1] : decodeEntities(raw)).trim();
 }
 
-function parseItems(xml) {
-  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
+function contentRestriction(item) {
+  const m = item.match(
+    /<category domain="https:\/\/www\.dumont\.de\/content-restriction">([^<]*)<\/category>/,
+  );
+  return m ? m[1].trim() : null;
 }
 
-// Strip query/hash so the bypass service gets a clean canonical URL.
+function topicSection(item, fallback) {
+  for (const m of item.matchAll(/<category(?:\s[^>]*)?>([^<]*)<\/category>/g)) {
+    const full = m[0];
+    if (full.includes("content-restriction") || full.includes("feedtype")) continue;
+    const t = m[1].trim();
+    if (t) return t;
+  }
+  return fallback;
+}
+
+function parseItems(xml) {
+  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]).slice(0, MAX_ITEMS_PER_FEED);
+}
+
 function cleanUrl(link) {
   const u = new URL(link);
   return u.origin + u.pathname;
+}
+
+function isZeitFree(url) {
+  return /^\/(news|video)\//.test(new URL(url).pathname);
+}
+
+function withLinks(a) {
+  const free =
+    a.source === "ksta" ? a.access === "free" : a.source === "zeit" ? isZeitFree(a.url) : false;
+  const archiveUrl = BYPASS_PREFIX + a.url;
+  return {
+    ...a,
+    free,
+    archiveUrl,
+    saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
+    readUrl: free ? a.url : archiveUrl,
+  };
 }
 
 async function fetchFeed(feed) {
@@ -88,15 +120,21 @@ async function fetchFeed(feed) {
     const link = tag(item, "link");
     if (!title || !link) return [];
     const url = cleanUrl(link);
-    const date = new Date(tag(item, "pubDate"));
+    const pub = tag(item, "dcterms:modified") || tag(item, "pubDate");
+    const date = new Date(pub);
+    const section = topicSection(item, feed.section);
+    const access = feed.source === "ksta" ? contentRestriction(item) : null;
+
     return [
       {
-        id: url,
+        id: `${feed.source}:${url}`,
+        source: feed.source,
         title,
         summary: tag(item, "description"),
-        section: tag(item, "category") || feed.name,
+        section,
         publishedAt: isNaN(date) ? null : date.toISOString(),
         url,
+        access,
       },
     ];
   });
@@ -115,17 +153,22 @@ async function main() {
   const fresh = [];
   results.forEach((r, i) => {
     if (r.status === "fulfilled") fresh.push(...r.value);
-    else console.warn(`Feed "${FEEDS[i].name}" failed:`, r.reason.message);
+    else console.warn(`Feed "${FEEDS[i].source}/${FEEDS[i].section}" failed:`, r.reason.message);
   });
 
-  // Fail loudly if everything failed so the workflow doesn't commit an empty file.
-  if (fresh.length === 0) throw new Error("No articles fetched from any feed");
+  const gotZeit = fresh.some((a) => a.source === "zeit");
+  const gotKsta = fresh.some((a) => a.source === "ksta");
+  if (!gotZeit && !gotKsta) throw new Error("No articles fetched from any feed");
 
-  // Merge with previous run (fresh wins), drop old items, dedupe by URL.
   const cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
   const byId = new Map();
-  for (const a of [...(await loadPrevious()), ...fresh]) {
-    if (a.publishedAt && new Date(a.publishedAt).getTime() < cutoff) continue;
+  for (const raw of [...(await loadPrevious()), ...fresh]) {
+    if (raw.publishedAt && new Date(raw.publishedAt).getTime() < cutoff) continue;
+    const a = { ...raw };
+    delete a.free;
+    delete a.archiveUrl;
+    delete a.saveUrl;
+    delete a.readUrl;
     byId.set(a.id, withLinks(a));
   }
 
@@ -135,9 +178,12 @@ async function main() {
 
   await writeFile(
     OUTPUT,
-    JSON.stringify({ updatedAt: new Date().toISOString(), articles }, null, 2) + "\n",
+    JSON.stringify({ updatedAt: new Date().toISOString(), sources: SOURCES, articles }, null, 2) + "\n",
   );
-  console.log(`Wrote ${articles.length} articles to articles.json`);
+  const counts = Object.fromEntries(
+    ["zeit", "ksta"].map((s) => [s, articles.filter((a) => a.source === s).length]),
+  );
+  console.log(`Wrote ${articles.length} articles (ZEIT ${counts.zeit}, KSTA ${counts.ksta})`);
 }
 
 main().catch((err) => {
