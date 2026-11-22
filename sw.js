@@ -1,4 +1,4 @@
-const SHELL_CACHE = "news-scraper-shell-v2";
+const SHELL_CACHE = "news-scraper-shell-v3";
 
 const shellUrls = (base) => [
   `${base}index.html`,
