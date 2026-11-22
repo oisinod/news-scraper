@@ -1,0 +1,10 @@
+{
+  "name": "news-scraper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "refresh": "node scripts/fetch-feeds.mjs",
+    "serve": "pnpm dlx serve ."
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZEIT Schlagzeilen</title>
+    <style>
+      :root { color-scheme: light dark; --muted: #6b7280; --border: #e5e7eb; }
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 1rem; }
+      header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
+      h1 { margin: 0; font-size: 1.4rem; }
+      #updated { color: var(--muted); font-size: .85rem; }
+      #filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0; }
+      #filters button { border: 1px solid var(--border); background: none; color: inherit; border-radius: 999px; padding: .2rem .8rem; cursor: pointer; font: inherit; font-size: .85rem; }
+      #filters button[aria-pressed="true"] { background: #111; color: #fff; border-color: #111; }
+      ul { list-style: none; padding: 0; margin: 0; }
+      li { padding: .8rem 0; border-bottom: 1px solid var(--border); }
+      li a { color: inherit; font-weight: 600; text-decoration: none; }
+      li a:hover { text-decoration: underline; }
+      .meta { color: var(--muted); font-size: .8rem; }
+      .summary { margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ZEIT Schlagzeilen</h1>
+      <span id="updated"></span>
+    </header>
+    <div id="filters"></div>
+    <ul id="list"><li>Lade …</li></ul>
+
+    <script>
+      const listEl = document.getElementById("list");
+      const filtersEl = document.getElementById("filters");
+      const fmt = new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" });
+      let articles = [];
+      let active = "Alle";
+
+      function render() {
+        const shown = active === "Alle" ? articles : articles.filter((a) => a.section === active);
+        listEl.replaceChildren(
+          ...shown.map((a) => {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = a.readUrl; // built by the fetch script, only followed on user click
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = a.title;
+            const meta = document.createElement("div");
+            meta.className = "meta";
+            meta.textContent = [a.section, a.publishedAt && fmt.format(new Date(a.publishedAt))]
+              .filter(Boolean)
+              .join(" · ");
+            li.append(link, meta);
+            if (a.summary) {
+              const p = document.createElement("p");
+              p.className = "summary";
+              p.textContent = a.summary;
+              li.append(p);
+            }
+            return li;
+          }),
+        );
+      }
+
+      function renderFilters() {
+        const sections = ["Alle", ...new Set(articles.map((a) => a.section))];
+        filtersEl.replaceChildren(
+          ...sections.map((s) => {
+            const b = document.createElement("button");
+            b.textContent = s;
+            b.setAttribute("aria-pressed", String(s === active));
+            b.onclick = () => { active = s; renderFilters(); render(); };
+            return b;
+          }),
+        );
+      }
+
+      fetch("articles.json", { cache: "no-cache" })
+        .then((r) => r.json())
+        .then((data) => {
+          articles = data.articles;
+          document.getElementById("updated").textContent =
+            "Aktualisiert: " + fmt.format(new Date(data.updatedAt));
+          renderFilters();
+          render();
+        })
+        .catch(() => { listEl.innerHTML = "<li>Artikel konnten nicht geladen werden.</li>"; });
+    </script>
+  </body>
+</html>
