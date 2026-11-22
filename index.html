@@ -440,7 +440,8 @@
         const meta = document.createElement("div");
         meta.className = "meta";
         const via = a.archiveVia ?? "";
-        meta.textContent = [src.shortName, a.section, via].filter(Boolean).join(" · ");
+        const srcLabel = srcId === "ksta" ? "KSTA" : src.shortName;
+        meta.textContent = [srcLabel, a.section, via].filter(Boolean).join(" · ");
 
         const sub = document.createElement("div");
         sub.className = "sub-links";
