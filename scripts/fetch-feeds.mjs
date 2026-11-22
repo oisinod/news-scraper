@@ -42,7 +42,10 @@ const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
 const RETENTION_DAYS = 7;
 const MAX_ARTICLES = 400;
 const MAX_ITEMS_PER_FEED = 35;
-const ARCHIVE_VERIFY = process.env.ARCHIVE_VERIFY !== "0";
+// Drop items without a readable mirror only when "1". Default: show full feed.
+const ARCHIVE_VERIFY = process.env.ARCHIVE_VERIFY === "1";
+// When verify is off, optionally probe in the background to improve readUrl (slow).
+const ARCHIVE_ENRICH = process.env.ARCHIVE_ENRICH === "1";
 const ARCHIVE_PROBE_CONCURRENCY = Number(process.env.ARCHIVE_PROBE_CONCURRENCY ?? 3);
 const ARCHIVE_PROBE_DELAY_MS = Number(process.env.ARCHIVE_PROBE_DELAY_MS ?? 800);
 
@@ -69,6 +72,19 @@ function contentRestriction(item) {
     /<category domain="https:\/\/www\.dumont\.de\/content-restriction">([^<]*)<\/category>/,
   );
   return m ? m[1].trim() : null;
+}
+
+function itemImage(item) {
+  const enc = item.match(/<enclosure\b[^>]*\burl="([^"]+)"[^>]*\btype="image[^"]*"/i);
+  if (enc) return decodeEntities(enc[1]);
+  const enc2 = item.match(/<enclosure\b[^>]*\btype="image[^"]*"[^>]*\burl="([^"]+)"/i);
+  if (enc2) return decodeEntities(enc2[1]);
+  const media = item.match(/<media:content\b[^>]*\burl="([^"]+)"/i);
+  if (media) return decodeEntities(media[1]);
+  const encoded = tag(item, "content:encoded");
+  const img = encoded.match(/<img[^>]+src="([^"]+)"/i);
+  if (img) return decodeEntities(img[1]);
+  return null;
 }
 
 function topicSection(item, fallback) {
@@ -145,51 +161,54 @@ function stripDerived(a) {
   return copy;
 }
 
-/** Drop paywalled items with no working snapshot; refresh snapshotUrl when found. */
+function sortByTime(articles) {
+  return [...articles].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+}
+
 async function applyArchiveChecks(articles) {
-  if (!ARCHIVE_VERIFY) return articles.map((a) => withLinks(stripDerived(a)));
-
-  const kept = [];
-  let dropped = 0;
-  let verified = 0;
-  const toProbe = [];
-
-  for (const raw of articles) {
-    const base = stripDerived(raw);
-    if (isFreeArticle(base)) {
-      kept.push(withLinks(base));
-      continue;
-    }
-    toProbe.push(base);
+  const bases = articles.map((a) => stripDerived(a));
+  if (!ARCHIVE_VERIFY && !ARCHIVE_ENRICH) {
+    return sortByTime(bases.map((a) => withLinks(a)));
   }
 
-  const results = await mapPool(toProbe, ARCHIVE_PROBE_CONCURRENCY, ARCHIVE_PROBE_DELAY_MS, (article) =>
-    probeReadableProviders(article.url, article.title),
+  const paid = bases.filter((b) => !isFreeArticle(b));
+  const results = await mapPool(
+    paid,
+    ARCHIVE_PROBE_CONCURRENCY,
+    ARCHIVE_PROBE_DELAY_MS,
+    (article) => probeReadableProviders(article.url, article.title),
   );
 
-  for (let i = 0; i < toProbe.length; i++) {
-    const base = toProbe[i];
-    const hit = results[i];
-    if (hit.ok === true) {
-      verified++;
-      kept.push(
-        withLinks({
+  let verified = 0;
+  let dropped = 0;
+  let ri = 0;
+  const out = bases
+    .map((base) => {
+      if (isFreeArticle(base)) return withLinks(base);
+      const hit = results[ri++];
+      if (hit.ok === true) {
+        verified++;
+        return withLinks({
           ...base,
           archived: true,
           archiveVia: hit.via,
           snapshotUrl: hit.snapshotUrl,
-        }),
-      );
-    } else {
-      dropped++;
-    }
+        });
+      }
+      if (ARCHIVE_VERIFY) {
+        dropped++;
+        return null;
+      }
+      return withLinks(base);
+    })
+    .filter(Boolean);
+
+  if (ARCHIVE_VERIFY) {
+    console.log(`Read verify: ${verified} ok, ${dropped} hidden, ${out.filter((a) => a.free).length} free`);
+  } else {
+    console.log(`Read enrich: ${verified} mirrors for ${paid.length} paywalled items`);
   }
-
-  console.log(
-    `Read verify: ${verified} ok, ${dropped} hidden (no readable mirror), ${kept.filter((a) => a.free).length} free`,
-  );
-
-  return kept.sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+  return sortByTime(out);
 }
 
 async function fetchFeed(feed) {
@@ -220,6 +239,7 @@ async function fetchFeed(feed) {
         publishedAt: isNaN(date) ? null : date.toISOString(),
         url,
         access,
+        image: itemImage(item),
       },
     ];
   });

@@ -20,11 +20,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Fetch and verify archives
+      - name: Fetch feeds
         env:
-          ARCHIVE_VERIFY: "1"
+          ARCHIVE_VERIFY: "0"
         run: node scripts/fetch-feeds.mjs
-        timeout-minutes: 45
+        timeout-minutes: 15
       - name: Commit changes
         run: |
           if git diff --quiet -- articles.json; then
