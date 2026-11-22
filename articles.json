@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T12:07:33.651Z",
+  "updatedAt": "2026-11-22T12:12:07.500Z",
   "articles": [
     {
       "id": "https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
@@ -8,7 +8,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T12:00:04.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fmann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet",
@@ -17,7 +20,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:55:49.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Ftransporter-erfasst-rennradfahrer-und-fluechtet",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet"
     },
     {
       "id": "https://www.zeit.de/video/2026-11/proteste-gegen-hohe-lebenshaltungskosten-in-europa",
@@ -26,7 +32,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:53:46.000Z",
       "url": "https://www.zeit.de/video/2026-11/proteste-gegen-hohe-lebenshaltungskosten-in-europa",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/video/2026-11/proteste-gegen-hohe-lebenshaltungskosten-in-europa"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/video/2026-11/proteste-gegen-hohe-lebenshaltungskosten-in-europa",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fvideo%2F2026-11%2Fproteste-gegen-hohe-lebenshaltungskosten-in-europa",
+      "readUrl": "https://www.zeit.de/video/2026-11/proteste-gegen-hohe-lebenshaltungskosten-in-europa"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/jaeger-verfehlt-reh-und-erschiesst-jagdhund",
@@ -35,7 +44,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:52:03.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/jaeger-verfehlt-reh-und-erschiesst-jagdhund",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/jaeger-verfehlt-reh-und-erschiesst-jagdhund"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/jaeger-verfehlt-reh-und-erschiesst-jagdhund",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fjaeger-verfehlt-reh-und-erschiesst-jagdhund",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/jaeger-verfehlt-reh-und-erschiesst-jagdhund"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/polizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen",
@@ -44,7 +56,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:50:38.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/polizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/polizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/polizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fpolizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/polizei-stoppt-hochzeitskorso-nach-gemeldeten-schuessen"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/hunderte-menschen-bei-trauerfeier-fuer-lisa",
@@ -53,7 +68,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:50:34.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/hunderte-menschen-bei-trauerfeier-fuer-lisa",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/hunderte-menschen-bei-trauerfeier-fuer-lisa"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/hunderte-menschen-bei-trauerfeier-fuer-lisa",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fhunderte-menschen-bei-trauerfeier-fuer-lisa",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/hunderte-menschen-bei-trauerfeier-fuer-lisa"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/autofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand",
@@ -62,15 +80,21 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:50:07.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/autofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/autofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/autofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fautofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/autofahrer-prallt-auf-flucht-vor-polizei-gegen-hauswand"
     },
     {
       "id": "https://www.zeit.de/politik/ausland/2026-11/31-weltklimakonferenz-keine-einigung-cop-antalya",
-      "title": "31. Weltklimakonferenz endet ohne Einigung",
-      "summary": "",
+      "title": "COP 31: Weltklimakonferenz endet ohne gemeinsame Abschlusserklärung",
+      "summary": "Die 31. Weltklimakonferenz ist ohne eine gemeinsame Abschlusserklärung zu Ende gegangen. Es seien keine Beschlüsse gefasst ​worden, sagte Konferenzpräsident Murat Kurum.",
       "section": "Ausland",
       "publishedAt": "2026-11-22T11:49:21.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/31-weltklimakonferenz-keine-einigung-cop-antalya",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/31-weltklimakonferenz-keine-einigung-cop-antalya",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2F31-weltklimakonferenz-keine-einigung-cop-antalya",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/31-weltklimakonferenz-keine-einigung-cop-antalya"
     },
     {
@@ -80,7 +104,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:48:14.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/papst-nimmt-ruecktrittsgesuch-von-bischof-feige-an",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/papst-nimmt-ruecktrittsgesuch-von-bischof-feige-an"
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/papst-nimmt-ruecktrittsgesuch-von-bischof-feige-an",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fpapst-nimmt-ruecktrittsgesuch-von-bischof-feige-an",
+      "readUrl": "https://www.zeit.de/news/2026-11/22/papst-nimmt-ruecktrittsgesuch-von-bischof-feige-an"
     },
     {
       "id": "https://www.zeit.de/news/2026-11/22/ploetzlich-erster-kann-der-bvb-die-bayern-herausfordern",
@@ -89,7 +116,10 @@
       "section": "News",
       "publishedAt": "2026-11-22T11:47:55.000Z",
       "url": "https://www.zeit.de/news/2026-11/22/ploetzlich-erster-kann-der-bvb-die-bayern-herausfordern",
-      "readUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/ploetzlich-erster-kann-der-bvb-die-bayern-herausfordern"
+      "readUrl": "https://www.zeit.de/news/2026-11/22/ploetzlich-erster-kann-der-bvb-die-bayern-herausfordern",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/22/ploetzlich-erster-kann-der-bvb-die-bayern-herausfordern",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F22%2Fploetzlich-erster-kann-der-bvb-die-bayern-herausfordern"
     },
     {
       "id": "https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
@@ -98,6 +128,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T11:28:27.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Fweltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe"
     },
     {
@@ -107,6 +140,9 @@
       "section": "zeit-magazin",
       "publishedAt": "2026-11-22T11:21:47.000Z",
       "url": "https://www.zeit.de/zeit-magazin/2026-11/erbschaft-eltern-kinder-familie-testament-vermoegen",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/zeit-magazin/2026-11/erbschaft-eltern-kinder-familie-testament-vermoegen",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fzeit-magazin%2F2026-11%2Ferbschaft-eltern-kinder-familie-testament-vermoegen",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/zeit-magazin/2026-11/erbschaft-eltern-kinder-familie-testament-vermoegen"
     },
     {
@@ -116,6 +152,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T11:19:59.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/grippeimpfstoff-engpass-lieferung-paul-ehrlich-institut-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/grippeimpfstoff-engpass-lieferung-paul-ehrlich-institut-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fgrippeimpfstoff-engpass-lieferung-paul-ehrlich-institut-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/grippeimpfstoff-engpass-lieferung-paul-ehrlich-institut-gxe"
     },
     {
@@ -125,6 +164,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T11:17:36.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/spritpreisdeckel-katharina-reiche-cdu-autobahntankstellen-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/spritpreisdeckel-katharina-reiche-cdu-autobahntankstellen-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fspritpreisdeckel-katharina-reiche-cdu-autobahntankstellen-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/spritpreisdeckel-katharina-reiche-cdu-autobahntankstellen-gxe"
     },
     {
@@ -134,6 +176,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-22T11:16:01.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/javier-milei-entwicklung-argentinien-wirtschaftspolitik-papst-leo",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/javier-milei-entwicklung-argentinien-wirtschaftspolitik-papst-leo",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fjavier-milei-entwicklung-argentinien-wirtschaftspolitik-papst-leo",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/javier-milei-entwicklung-argentinien-wirtschaftspolitik-papst-leo"
     },
     {
@@ -143,6 +188,9 @@
       "section": "wochenmarkt",
       "publishedAt": "2026-11-22T10:51:03.000Z",
       "url": "https://www.zeit.de/zeit-magazin/2026/50/kaffee-sahne-genuss-erziehung-grosseltern",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/zeit-magazin/2026/50/kaffee-sahne-genuss-erziehung-grosseltern",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fzeit-magazin%2F2026%2F50%2Fkaffee-sahne-genuss-erziehung-grosseltern",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/zeit-magazin/2026/50/kaffee-sahne-genuss-erziehung-grosseltern"
     },
     {
@@ -152,6 +200,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-22T10:34:20.000Z",
       "url": "https://www.zeit.de/2026/50/betrug-haeusliche-pflege-pflegedienste-alltagshelfer-abrechnungen-pflegekassen",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/betrug-haeusliche-pflege-pflegedienste-alltagshelfer-abrechnungen-pflegekassen",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Fbetrug-haeusliche-pflege-pflegedienste-alltagshelfer-abrechnungen-pflegekassen",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/betrug-haeusliche-pflege-pflegedienste-alltagshelfer-abrechnungen-pflegekassen"
     },
     {
@@ -161,6 +212,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-22T09:58:45.000Z",
       "url": "https://www.zeit.de/sport/2026-11/atp-finals-alexander-zverev-carlos-alcaraz-tennis-finale-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/atp-finals-alexander-zverev-carlos-alcaraz-tennis-finale-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fatp-finals-alexander-zverev-carlos-alcaraz-tennis-finale-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/atp-finals-alexander-zverev-carlos-alcaraz-tennis-finale-gxe"
     },
     {
@@ -170,6 +224,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T09:44:00.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/un-klimakonferenz-cop31-antalya-tuerkei-murat-kurum-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/un-klimakonferenz-cop31-antalya-tuerkei-murat-kurum-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Fun-klimakonferenz-cop31-antalya-tuerkei-murat-kurum-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/un-klimakonferenz-cop31-antalya-tuerkei-murat-kurum-gxe"
     },
     {
@@ -179,6 +236,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-22T09:00:06.000Z",
       "url": "https://www.zeit.de/sport/2026-11/hamburger-sv-mario-vuskovic-sperre-doping-fussball",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/hamburger-sv-mario-vuskovic-sperre-doping-fussball",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fhamburger-sv-mario-vuskovic-sperre-doping-fussball",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/hamburger-sv-mario-vuskovic-sperre-doping-fussball"
     },
     {
@@ -188,6 +248,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T08:50:15.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/josef-schuster-zentralrat-juden-antisemitismus-deutschland-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/josef-schuster-zentralrat-juden-antisemitismus-deutschland-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fjosef-schuster-zentralrat-juden-antisemitismus-deutschland-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/josef-schuster-zentralrat-juden-antisemitismus-deutschland-gxe"
     },
     {
@@ -197,6 +260,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T08:10:29.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/kuenstliche-intelligenz-karl-lauterbach-spd-deutschland-usa-china-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/kuenstliche-intelligenz-karl-lauterbach-spd-deutschland-usa-china-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fkuenstliche-intelligenz-karl-lauterbach-spd-deutschland-usa-china-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/kuenstliche-intelligenz-karl-lauterbach-spd-deutschland-usa-china-gxe"
     },
     {
@@ -206,6 +272,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-22T08:03:58.000Z",
       "url": "https://www.zeit.de/zeit-fuer-unternehmer/2026/04/selbststaendige-mutterschutz-selbststaendige-unternehmerinnen-frauen",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/zeit-fuer-unternehmer/2026/04/selbststaendige-mutterschutz-selbststaendige-unternehmerinnen-frauen",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fzeit-fuer-unternehmer%2F2026%2F04%2Fselbststaendige-mutterschutz-selbststaendige-unternehmerinnen-frauen",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/zeit-fuer-unternehmer/2026/04/selbststaendige-mutterschutz-selbststaendige-unternehmerinnen-frauen"
     },
     {
@@ -215,6 +284,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T07:53:59.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/ice-festnahme-flughafen-seattle-bob-ferguson-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/ice-festnahme-flughafen-seattle-bob-ferguson-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Fice-festnahme-flughafen-seattle-bob-ferguson-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/ice-festnahme-flughafen-seattle-bob-ferguson-gxe"
     },
     {
@@ -224,6 +296,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T07:49:28.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/robert-habeck-arktis-geopolitik-usa-russland-china-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/robert-habeck-arktis-geopolitik-usa-russland-china-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Frobert-habeck-arktis-geopolitik-usa-russland-china-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/robert-habeck-arktis-geopolitik-usa-russland-china-gxe"
     },
     {
@@ -233,6 +308,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T05:41:55.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/cop31-antalya-einigung-tuerkei-australien-fossile-brennstoffe-finanzhilfe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/cop31-antalya-einigung-tuerkei-australien-fossile-brennstoffe-finanzhilfe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Fcop31-antalya-einigung-tuerkei-australien-fossile-brennstoffe-finanzhilfe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/cop31-antalya-einigung-tuerkei-australien-fossile-brennstoffe-finanzhilfe"
     },
     {
@@ -242,6 +320,9 @@
       "section": "Deutschland",
       "publishedAt": "2026-11-22T05:19:53.000Z",
       "url": "https://www.zeit.de/politik/deutschland/2026-11/mordparagraf-stephanie-hubig-femizid-strafrecht-gesetzesentwurf",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/mordparagraf-stephanie-hubig-femizid-strafrecht-gesetzesentwurf",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fmordparagraf-stephanie-hubig-femizid-strafrecht-gesetzesentwurf",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/mordparagraf-stephanie-hubig-femizid-strafrecht-gesetzesentwurf"
     },
     {
@@ -251,6 +332,9 @@
       "section": "Politik",
       "publishedAt": "2026-11-22T04:59:47.000Z",
       "url": "https://www.zeit.de/politik/2026-11/deutsche-wirtschaft-stellenabbau-unternehmen-nachrichtenpodcast",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/2026-11/deutsche-wirtschaft-stellenabbau-unternehmen-nachrichtenpodcast",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2F2026-11%2Fdeutsche-wirtschaft-stellenabbau-unternehmen-nachrichtenpodcast",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/2026-11/deutsche-wirtschaft-stellenabbau-unternehmen-nachrichtenpodcast"
     },
     {
@@ -260,6 +344,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T04:44:35.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/krim-bruecke-ukraine-krieg-russland-angriffe-symbolik",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/krim-bruecke-ukraine-krieg-russland-angriffe-symbolik",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Fkrim-bruecke-ukraine-krieg-russland-angriffe-symbolik",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/krim-bruecke-ukraine-krieg-russland-angriffe-symbolik"
     },
     {
@@ -269,6 +356,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-22T02:46:20.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-05/iran-krieg-donald-trump-hormus-live",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-05/iran-krieg-donald-trump-hormus-live",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-05%2Firan-krieg-donald-trump-hormus-live",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-05/iran-krieg-donald-trump-hormus-live"
     },
     {
@@ -278,6 +368,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-21T20:48:13.000Z",
       "url": "https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayer-leverkusen-paderborn-frankfurt-hoffenheim-union-berlin-leipzig-moenchengladbach-dortmund-elversberg-freiburg-schalke-stuttgart",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayer-leverkusen-paderborn-frankfurt-hoffenheim-union-berlin-leipzig-moenchengladbach-dortmund-elversberg-freiburg-schalke-stuttgart",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fbundesliga-10-spieltag-bayer-leverkusen-paderborn-frankfurt-hoffenheim-union-berlin-leipzig-moenchengladbach-dortmund-elversberg-freiburg-schalke-stuttgart",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayer-leverkusen-paderborn-frankfurt-hoffenheim-union-berlin-leipzig-moenchengladbach-dortmund-elversberg-freiburg-schalke-stuttgart"
     },
     {
@@ -287,6 +380,9 @@
       "section": "Digital",
       "publishedAt": "2026-11-21T19:20:08.000Z",
       "url": "https://www.zeit.de/podcasts/2026-11/nvidia-jensen-huang-grafikkarten-gaming",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/podcasts/2026-11/nvidia-jensen-huang-grafikkarten-gaming",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpodcasts%2F2026-11%2Fnvidia-jensen-huang-grafikkarten-gaming",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/podcasts/2026-11/nvidia-jensen-huang-grafikkarten-gaming"
     },
     {
@@ -296,6 +392,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-21T19:10:02.000Z",
       "url": "https://www.zeit.de/sport/2026-11/fc-bayern-harry-kane-jamal-musiala-verletzung",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fc-bayern-harry-kane-jamal-musiala-verletzung",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Ffc-bayern-harry-kane-jamal-musiala-verletzung",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fc-bayern-harry-kane-jamal-musiala-verletzung"
     },
     {
@@ -305,6 +404,9 @@
       "section": "Unternehmen",
       "publishedAt": "2026-11-21T19:01:46.000Z",
       "url": "https://www.zeit.de/wirtschaft/unternehmen/2026-11/paolo-bulgari-schmuckunternehmer-tod-edelsteine",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/paolo-bulgari-schmuckunternehmer-tod-edelsteine",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2Funternehmen%2F2026-11%2Fpaolo-bulgari-schmuckunternehmer-tod-edelsteine",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/paolo-bulgari-schmuckunternehmer-tod-edelsteine"
     },
     {
@@ -314,6 +416,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-21T17:30:56.000Z",
       "url": "https://www.zeit.de/sport/2026-11/fifa-praesidentenwahl-2027-gianni-infantino-patrice-motsepe-philippe-diallo-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fifa-praesidentenwahl-2027-gianni-infantino-patrice-motsepe-philippe-diallo-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Ffifa-praesidentenwahl-2027-gianni-infantino-patrice-motsepe-philippe-diallo-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fifa-praesidentenwahl-2027-gianni-infantino-patrice-motsepe-philippe-diallo-gxe"
     },
     {
@@ -323,6 +428,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-21T16:08:26.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/howard-lutnick-usa-minister-wirtschaftspolitik-donald-trump",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/howard-lutnick-usa-minister-wirtschaftspolitik-donald-trump",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fhoward-lutnick-usa-minister-wirtschaftspolitik-donald-trump",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/howard-lutnick-usa-minister-wirtschaftspolitik-donald-trump"
     },
     {
@@ -332,6 +440,9 @@
       "section": "Reisen",
       "publishedAt": "2026-11-21T15:04:19.000Z",
       "url": "https://www.zeit.de/2026/50/gozo-insel-wandern-strand",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/gozo-insel-wandern-strand",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Fgozo-insel-wandern-strand",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/gozo-insel-wandern-strand"
     },
     {
@@ -341,6 +452,9 @@
       "section": "Geld",
       "publishedAt": "2026-11-21T14:03:29.000Z",
       "url": "https://www.zeit.de/geld/2026-11/ki-boom-boersencrash-technologieaktien-nasdaq",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/geld/2026-11/ki-boom-boersencrash-technologieaktien-nasdaq",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgeld%2F2026-11%2Fki-boom-boersencrash-technologieaktien-nasdaq",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/geld/2026-11/ki-boom-boersencrash-technologieaktien-nasdaq"
     },
     {
@@ -350,6 +464,9 @@
       "section": "Familie",
       "publishedAt": "2026-11-21T12:49:43.000Z",
       "url": "https://www.zeit.de/familie/2026-11/getrennte-eltern-konflikte-kosten-uebergabe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/familie/2026-11/getrennte-eltern-konflikte-kosten-uebergabe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Ffamilie%2F2026-11%2Fgetrennte-eltern-konflikte-kosten-uebergabe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/familie/2026-11/getrennte-eltern-konflikte-kosten-uebergabe"
     },
     {
@@ -359,6 +476,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-21T12:05:59.000Z",
       "url": "https://www.zeit.de/2026/50/essen-unterwegs-meal-prep-kosten-gesundheit",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/essen-unterwegs-meal-prep-kosten-gesundheit",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Fessen-unterwegs-meal-prep-kosten-gesundheit",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/essen-unterwegs-meal-prep-kosten-gesundheit"
     },
     {
@@ -368,6 +488,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-21T11:40:42.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/klimaschutzmassnahnen-vergleich-laender-griechenland-china",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/klimaschutzmassnahnen-vergleich-laender-griechenland-china",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fklimaschutzmassnahnen-vergleich-laender-griechenland-china",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/klimaschutzmassnahnen-vergleich-laender-griechenland-china"
     },
     {
@@ -377,6 +500,9 @@
       "section": "Games",
       "publishedAt": "2026-11-21T10:35:00.000Z",
       "url": "https://www.zeit.de/digital/games/2026-11/gewalt-grand-theft-auto-vi-glorifizierung-gaming-videospiel",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/gewalt-grand-theft-auto-vi-glorifizierung-gaming-videospiel",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2Fgames%2F2026-11%2Fgewalt-grand-theft-auto-vi-glorifizierung-gaming-videospiel",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/gewalt-grand-theft-auto-vi-glorifizierung-gaming-videospiel"
     },
     {
@@ -386,6 +512,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-21T09:28:30.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/strompreise-stromkosten-stromsteuer-netzentgelte-verivox-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/strompreise-stromkosten-stromsteuer-netzentgelte-verivox-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fstrompreise-stromkosten-stromsteuer-netzentgelte-verivox-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/strompreise-stromkosten-stromsteuer-netzentgelte-verivox-gxe"
     },
     {
@@ -395,6 +524,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-21T08:51:31.000Z",
       "url": "https://www.zeit.de/sport/2026-11/juergen-klopp-trainerverhalten-fussball-gruenflaeche",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/juergen-klopp-trainerverhalten-fussball-gruenflaeche",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fjuergen-klopp-trainerverhalten-fussball-gruenflaeche",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/juergen-klopp-trainerverhalten-fussball-gruenflaeche"
     },
     {
@@ -404,6 +536,9 @@
       "section": "Internet",
       "publishedAt": "2026-11-21T08:45:14.000Z",
       "url": "https://www.zeit.de/digital/2026-11/social-media-slang-coderotted-bedeutung-gen-z",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/social-media-slang-coderotted-bedeutung-gen-z",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2F2026-11%2Fsocial-media-slang-coderotted-bedeutung-gen-z",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/social-media-slang-coderotted-bedeutung-gen-z"
     },
     {
@@ -413,6 +548,9 @@
       "section": "Zeitgeschehen",
       "publishedAt": "2026-11-21T07:53:27.000Z",
       "url": "https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/pacific-palisades-brand-jonathan-r-los-angeles-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/pacific-palisades-brand-jonathan-r-los-angeles-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2Fzeitgeschehen%2F2026-11%2Fpacific-palisades-brand-jonathan-r-los-angeles-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/pacific-palisades-brand-jonathan-r-los-angeles-gxe"
     },
     {
@@ -422,6 +560,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-21T07:49:05.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/plastikmuell-export-eu-oecd-ausfuhr-verbot-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/plastikmuell-export-eu-oecd-ausfuhr-verbot-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fplastikmuell-export-eu-oecd-ausfuhr-verbot-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/plastikmuell-export-eu-oecd-ausfuhr-verbot-gxe"
     },
     {
@@ -431,6 +572,9 @@
       "section": "Boerse",
       "publishedAt": "2026-11-21T06:13:40.000Z",
       "url": "https://www.zeit.de/wirtschaft/2026-11/anthropic-boersengang-ki-unternehmen-aktie-nasdaq",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/anthropic-boersengang-ki-unternehmen-aktie-nasdaq",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fanthropic-boersengang-ki-unternehmen-aktie-nasdaq",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/anthropic-boersengang-ki-unternehmen-aktie-nasdaq"
     },
     {
@@ -440,6 +584,9 @@
       "section": "Digital",
       "publishedAt": "2026-11-21T05:01:31.000Z",
       "url": "https://www.zeit.de/digital/2026-11/siebtraegermaschine-kaffee-test-zuriga-marzocco-niche-zero",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/siebtraegermaschine-kaffee-test-zuriga-marzocco-niche-zero",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2F2026-11%2Fsiebtraegermaschine-kaffee-test-zuriga-marzocco-niche-zero",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/siebtraegermaschine-kaffee-test-zuriga-marzocco-niche-zero"
     },
     {
@@ -449,6 +596,9 @@
       "section": "Wirtschaft",
       "publishedAt": "2026-11-21T04:30:10.000Z",
       "url": "https://www.zeit.de/zeit-fuer-unternehmer/2026/04/rainer-esser-unternehmen-wohnungsmarkt-berlin-mietwohnungen",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/zeit-fuer-unternehmer/2026/04/rainer-esser-unternehmen-wohnungsmarkt-berlin-mietwohnungen",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fzeit-fuer-unternehmer%2F2026%2F04%2Frainer-esser-unternehmen-wohnungsmarkt-berlin-mietwohnungen",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/zeit-fuer-unternehmer/2026/04/rainer-esser-unternehmen-wohnungsmarkt-berlin-mietwohnungen"
     },
     {
@@ -458,6 +608,9 @@
       "section": "Unternehmen",
       "publishedAt": "2026-11-21T04:17:05.000Z",
       "url": "https://www.zeit.de/wirtschaft/unternehmen/2026-11/jensen-huang-nvidia-sec-ermittlungen-untersuchung-berichte",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/jensen-huang-nvidia-sec-ermittlungen-untersuchung-berichte",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2Funternehmen%2F2026-11%2Fjensen-huang-nvidia-sec-ermittlungen-untersuchung-berichte",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/jensen-huang-nvidia-sec-ermittlungen-untersuchung-berichte"
     },
     {
@@ -467,6 +620,9 @@
       "section": "Zeitgeschehen",
       "publishedAt": "2026-11-21T03:55:40.000Z",
       "url": "https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/zwangsraeumungen-deutschland-wohnraum-statistik-obdachlosigkeit-sahra-mirow",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/zwangsraeumungen-deutschland-wohnraum-statistik-obdachlosigkeit-sahra-mirow",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2Fzeitgeschehen%2F2026-11%2Fzwangsraeumungen-deutschland-wohnraum-statistik-obdachlosigkeit-sahra-mirow",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/zwangsraeumungen-deutschland-wohnraum-statistik-obdachlosigkeit-sahra-mirow"
     },
     {
@@ -476,6 +632,9 @@
       "section": "Zeitgeschehen",
       "publishedAt": "2026-11-21T01:49:39.000Z",
       "url": "https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-regelt-demos-friedlich-jugendproteste",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-regelt-demos-friedlich-jugendproteste",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2Fzeitgeschehen%2F2026-11%2Fgen-z-regelt-demos-friedlich-jugendproteste",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-regelt-demos-friedlich-jugendproteste"
     },
     {
@@ -485,6 +644,9 @@
       "section": "Unternehmen",
       "publishedAt": "2026-11-21T01:43:39.000Z",
       "url": "https://www.zeit.de/wirtschaft/unternehmen/2026-11/bayer-usa-roundup-glyphosat-sammelklage-monsanto-gericht-gebilligt",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/bayer-usa-roundup-glyphosat-sammelklage-monsanto-gericht-gebilligt",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2Funternehmen%2F2026-11%2Fbayer-usa-roundup-glyphosat-sammelklage-monsanto-gericht-gebilligt",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/unternehmen/2026-11/bayer-usa-roundup-glyphosat-sammelklage-monsanto-gericht-gebilligt"
     },
     {
@@ -494,6 +656,9 @@
       "section": "Games",
       "publishedAt": "2026-11-21T01:42:23.000Z",
       "url": "https://www.zeit.de/digital/games/2026-11/grand-theft-auto-vi-gta-6-rockstar-games-verkaufszahlen-umsatz",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/grand-theft-auto-vi-gta-6-rockstar-games-verkaufszahlen-umsatz",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2Fgames%2F2026-11%2Fgrand-theft-auto-vi-gta-6-rockstar-games-verkaufszahlen-umsatz",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/grand-theft-auto-vi-gta-6-rockstar-games-verkaufszahlen-umsatz"
     },
     {
@@ -503,6 +668,9 @@
       "section": "Digital",
       "publishedAt": "2026-11-21T01:31:30.000Z",
       "url": "https://www.zeit.de/wissenschaft/2026-11/riemannsche-vermutung-levent-alpoege-anthropic-ki-mathematik",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wissenschaft/2026-11/riemannsche-vermutung-levent-alpoege-anthropic-ki-mathematik",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwissenschaft%2F2026-11%2Friemannsche-vermutung-levent-alpoege-anthropic-ki-mathematik",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wissenschaft/2026-11/riemannsche-vermutung-levent-alpoege-anthropic-ki-mathematik"
     },
     {
@@ -512,6 +680,9 @@
       "section": "Zeitgeschehen",
       "publishedAt": "2026-11-21T00:09:18.000Z",
       "url": "https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-proteste-schueler-berlin-leipzig-frankfurt",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-proteste-schueler-berlin-leipzig-frankfurt",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2Fzeitgeschehen%2F2026-11%2Fgen-z-proteste-schueler-berlin-leipzig-frankfurt",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/gen-z-proteste-schueler-berlin-leipzig-frankfurt"
     },
     {
@@ -521,6 +692,9 @@
       "section": "Zeitgeschehen",
       "publishedAt": "2026-11-21T00:08:46.000Z",
       "url": "https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/genz-regelt-proteste-live",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/genz-regelt-proteste-live",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2Fzeitgeschehen%2F2026-11%2Fgenz-regelt-proteste-live",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/genz-regelt-proteste-live"
     },
     {
@@ -530,6 +704,9 @@
       "section": "Gesellschaft",
       "publishedAt": "2026-11-20T23:42:22.000Z",
       "url": "https://www.zeit.de/gesellschaft/2026-11/polizeigewalt-paris-michel-zecler-polizisten-prozess",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/polizeigewalt-paris-michel-zecler-polizisten-prozess",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2F2026-11%2Fpolizeigewalt-paris-michel-zecler-polizisten-prozess",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/polizeigewalt-paris-michel-zecler-polizisten-prozess"
     },
     {
@@ -539,6 +716,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-20T22:03:27.000Z",
       "url": "https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayern-muenchen-koeln",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayern-muenchen-koeln",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fbundesliga-10-spieltag-bayern-muenchen-koeln",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/bundesliga-10-spieltag-bayern-muenchen-koeln"
     },
     {
@@ -548,6 +728,9 @@
       "section": "Digital",
       "publishedAt": "2026-11-20T19:24:35.000Z",
       "url": "https://www.zeit.de/digital/2026-11/cyberangriff-hugendubel-buchhandelskette-internet-ausfall",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/cyberangriff-hugendubel-buchhandelskette-internet-ausfall",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2F2026-11%2Fcyberangriff-hugendubel-buchhandelskette-internet-ausfall",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/cyberangriff-hugendubel-buchhandelskette-internet-ausfall"
     },
     {
@@ -557,6 +740,9 @@
       "section": "Gesellschaft",
       "publishedAt": "2026-11-20T17:59:42.000Z",
       "url": "https://www.zeit.de/gesellschaft/2026-11/jugendproteste-deutschland-grossstaedte-genz-regelt",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/jugendproteste-deutschland-grossstaedte-genz-regelt",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2F2026-11%2Fjugendproteste-deutschland-grossstaedte-genz-regelt",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/jugendproteste-deutschland-grossstaedte-genz-regelt"
     },
     {
@@ -566,6 +752,9 @@
       "section": "Internet",
       "publishedAt": "2026-11-20T14:30:58.000Z",
       "url": "https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-kalifornien-open-ai-google-kuenstliche-intelligenz",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-kalifornien-open-ai-google-kuenstliche-intelligenz",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2Finternet%2F2026-11%2Fanthropic-boersengang-kalifornien-open-ai-google-kuenstliche-intelligenz",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-kalifornien-open-ai-google-kuenstliche-intelligenz"
     },
     {
@@ -575,6 +764,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-20T12:57:33.000Z",
       "url": "https://www.zeit.de/2026/50/arztbesuche-augenverletzung-gesundheitssystem",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/arztbesuche-augenverletzung-gesundheitssystem",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Farztbesuche-augenverletzung-gesundheitssystem",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/arztbesuche-augenverletzung-gesundheitssystem"
     },
     {
@@ -584,6 +776,9 @@
       "section": "Gesellschaft",
       "publishedAt": "2026-11-20T12:36:43.000Z",
       "url": "https://www.zeit.de/gesellschaft/2026-11/olli-dittrich-interviewpodcast-alles-gesagt",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/olli-dittrich-interviewpodcast-alles-gesagt",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2F2026-11%2Folli-dittrich-interviewpodcast-alles-gesagt",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/olli-dittrich-interviewpodcast-alles-gesagt"
     },
     {
@@ -593,6 +788,9 @@
       "section": "Gesellschaft",
       "publishedAt": "2026-11-20T12:00:19.000Z",
       "url": "https://www.zeit.de/gesellschaft/2026-11/gerard-depardieu-michel-houellebecq-justiz-vorwurf-vergewaltigung-frankreich-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/gerard-depardieu-michel-houellebecq-justiz-vorwurf-vergewaltigung-frankreich-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2F2026-11%2Fgerard-depardieu-michel-houellebecq-justiz-vorwurf-vergewaltigung-frankreich-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/gerard-depardieu-michel-houellebecq-justiz-vorwurf-vergewaltigung-frankreich-gxe"
     },
     {
@@ -602,6 +800,9 @@
       "section": "Sport",
       "publishedAt": "2026-11-20T11:53:46.000Z",
       "url": "https://www.zeit.de/sport/2026-11/uefa-nations-league-auslosung-deutschland-nyon-2027-gxe",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/uefa-nations-league-auslosung-deutschland-nyon-2027-gxe",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Fuefa-nations-league-auslosung-deutschland-nyon-2027-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/uefa-nations-league-auslosung-deutschland-nyon-2027-gxe"
     },
     {
@@ -611,6 +812,9 @@
       "section": "Familie",
       "publishedAt": "2026-11-20T10:53:06.000Z",
       "url": "https://www.zeit.de/familie/2026-11/geburtsverletzungen-muetter-koerper-frauengesundheit-beckenboden",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/familie/2026-11/geburtsverletzungen-muetter-koerper-frauengesundheit-beckenboden",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Ffamilie%2F2026-11%2Fgeburtsverletzungen-muetter-koerper-frauengesundheit-beckenboden",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/familie/2026-11/geburtsverletzungen-muetter-koerper-frauengesundheit-beckenboden"
     },
     {
@@ -620,6 +824,9 @@
       "section": "Gesellschaft",
       "publishedAt": "2026-11-20T06:37:35.000Z",
       "url": "https://www.zeit.de/gesellschaft/2026-11/svenja-jung-schauspiel-der-palast-adams-acht-wochenende-tipps-podcast",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/svenja-jung-schauspiel-der-palast-adams-acht-wochenende-tipps-podcast",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fgesellschaft%2F2026-11%2Fsvenja-jung-schauspiel-der-palast-adams-acht-wochenende-tipps-podcast",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/2026-11/svenja-jung-schauspiel-der-palast-adams-acht-wochenende-tipps-podcast"
     },
     {
@@ -629,6 +836,9 @@
       "section": "Games",
       "publishedAt": "2026-11-19T14:24:26.000Z",
       "url": "https://www.zeit.de/digital/games/2026-11/gaming-gta-vi-test-review-digitalpodcast",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/gaming-gta-vi-test-review-digitalpodcast",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2Fgames%2F2026-11%2Fgaming-gta-vi-test-review-digitalpodcast",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/games/2026-11/gaming-gta-vi-test-review-digitalpodcast"
     },
     {
@@ -638,6 +848,9 @@
       "section": "Digital",
       "publishedAt": "2026-11-19T13:07:15.000Z",
       "url": "https://www.zeit.de/digital/2026-11/catrin-misselhorn-philosophie-simulation-theorie-elon-musk",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/catrin-misselhorn-philosophie-simulation-theorie-elon-musk",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2F2026-11%2Fcatrin-misselhorn-philosophie-simulation-theorie-elon-musk",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/2026-11/catrin-misselhorn-philosophie-simulation-theorie-elon-musk"
     },
     {
@@ -647,6 +860,9 @@
       "section": "Internet",
       "publishedAt": "2026-11-19T11:44:01.000Z",
       "url": "https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-ki-unternehmen-borse-ipo",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-ki-unternehmen-borse-ipo",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fdigital%2Finternet%2F2026-11%2Fanthropic-boersengang-ki-unternehmen-borse-ipo",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/digital/internet/2026-11/anthropic-boersengang-ki-unternehmen-borse-ipo"
     },
     {
@@ -656,6 +872,9 @@
       "section": "Ausland",
       "publishedAt": "2026-11-18T15:45:40.000Z",
       "url": "https://www.zeit.de/2026/50/rhetorik-rechtsextremismus-oesterreich-politik-medien",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/rhetorik-rechtsextremismus-oesterreich-politik-medien",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Frhetorik-rechtsextremismus-oesterreich-politik-medien",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/rhetorik-rechtsextremismus-oesterreich-politik-medien"
     },
     {
@@ -665,6 +884,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-18T14:00:06.000Z",
       "url": "https://www.zeit.de/2026/50/buckelwal-poel-rettung-tierquaelerei-till-backhaus",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/buckelwal-poel-rettung-tierquaelerei-till-backhaus",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F50%2Fbuckelwal-poel-rettung-tierquaelerei-till-backhaus",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/50/buckelwal-poel-rettung-tierquaelerei-till-backhaus"
     },
     {
@@ -674,6 +896,9 @@
       "section": "Reisen",
       "publishedAt": "2026-11-18T06:27:23.000Z",
       "url": "https://www.zeit.de/2026/49/thailand-reise-mit-kindern-familien-infrastruktur-sicherheit",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/thailand-reise-mit-kindern-familien-infrastruktur-sicherheit",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F49%2Fthailand-reise-mit-kindern-familien-infrastruktur-sicherheit",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/thailand-reise-mit-kindern-familien-infrastruktur-sicherheit"
     },
     {
@@ -683,6 +908,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-17T15:40:32.000Z",
       "url": "https://www.zeit.de/2026/49/bergrettung-alpine-divorce-wandern-kompetenz",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/bergrettung-alpine-divorce-wandern-kompetenz",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F49%2Fbergrettung-alpine-divorce-wandern-kompetenz",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/bergrettung-alpine-divorce-wandern-kompetenz"
     },
     {
@@ -692,6 +920,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-15T18:03:26.000Z",
       "url": "https://www.zeit.de/2026/49/small-talk-plaudern-reden-kommunikation-einsamkeit",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/small-talk-plaudern-reden-kommunikation-einsamkeit",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F49%2Fsmall-talk-plaudern-reden-kommunikation-einsamkeit",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/small-talk-plaudern-reden-kommunikation-einsamkeit"
     },
     {
@@ -701,6 +932,9 @@
       "section": "Entdecken",
       "publishedAt": "2026-11-15T16:53:23.000Z",
       "url": "https://www.zeit.de/2026/49/batman-elektronik-galeria-kaufhaus-hermannplatz-berlin-reparatur",
+      "free": false,
+      "archiveUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/batman-elektronik-galeria-kaufhaus-hermannplatz-berlin-reparatur",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2F2026%2F49%2Fbatman-elektronik-galeria-kaufhaus-hermannplatz-berlin-reparatur",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/2026/49/batman-elektronik-galeria-kaufhaus-hermannplatz-berlin-reparatur"
     }
   ]

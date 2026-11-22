@@ -18,6 +18,8 @@
       li a { color: inherit; font-weight: 600; text-decoration: none; }
       li a:hover { text-decoration: underline; }
       .meta { color: var(--muted); font-size: .8rem; }
+      .links { font-size: .8rem; margin-top: .15rem; }
+      .links a { color: var(--muted); font-weight: 400; margin-right: .8rem; }
       .summary { margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
     </style>
   </head>
@@ -51,7 +53,20 @@
             meta.textContent = [a.section, a.publishedAt && fmt.format(new Date(a.publishedAt))]
               .filter(Boolean)
               .join(" · ");
-            li.append(link, meta);
+            const links = document.createElement("div");
+            links.className = "links";
+            const extra = a.free
+              ? [["Archiv", a.archiveUrl]]
+              : [["Original", a.url], ["Neu archivieren", a.saveUrl]];
+            for (const [label, href] of extra) {
+              const x = document.createElement("a");
+              x.href = href;
+              x.target = "_blank";
+              x.rel = "noopener noreferrer";
+              x.textContent = label;
+              links.append(x);
+            }
+            li.append(link, meta, links);
             if (a.summary) {
               const p = document.createElement("p");
               p.className = "summary";

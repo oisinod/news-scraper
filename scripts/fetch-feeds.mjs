@@ -25,6 +25,25 @@ const FEEDS = [
 // scheme of its own, so the prefix of the chosen service is prepended to the URL.
 // Override via env var BYPASS_PREFIX.
 const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
+// Asks the archive service to snapshot a URL that nobody has archived yet.
+const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
+
+// zeit.de has no free/paywalled flag in the feed and blocks scripted page requests,
+// so detect by URL: agency wire reports (/news/) and videos are always free.
+const isFree = (url) => /^\/(news|video)\//.test(new URL(url).pathname);
+
+// Derived links; recomputed on every run so config changes apply to retained items.
+const withLinks = (a) => {
+  const free = isFree(a.url);
+  const archiveUrl = BYPASS_PREFIX + a.url;
+  return {
+    ...a,
+    free,
+    archiveUrl,
+    saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
+    readUrl: free ? a.url : archiveUrl, // primary link for the headline
+  };
+};
 
 const RETENTION_DAYS = 7;
 const MAX_ARTICLES = 300;
@@ -78,7 +97,6 @@ async function fetchFeed(feed) {
         section: tag(item, "category") || feed.name,
         publishedAt: isNaN(date) ? null : date.toISOString(),
         url,
-        readUrl: BYPASS_PREFIX + url,
       },
     ];
   });
@@ -108,8 +126,7 @@ async function main() {
   const byId = new Map();
   for (const a of [...(await loadPrevious()), ...fresh]) {
     if (a.publishedAt && new Date(a.publishedAt).getTime() < cutoff) continue;
-    // Re-derive readUrl so changing BYPASS_PREFIX applies to retained items too.
-    byId.set(a.id, { ...a, readUrl: BYPASS_PREFIX + a.url });
+    byId.set(a.id, withLinks(a));
   }
 
   const articles = [...byId.values()]
