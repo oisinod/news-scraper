@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "refresh": "ARCHIVE_VERIFY=0 node scripts/fetch-feeds.mjs",
-    "refresh:verify": "ARCHIVE_VERIFY=1 ARCHIVE_FALLBACK_WAYBACK=1 node scripts/fetch-feeds.mjs",
+    "refresh:verify": "ARCHIVE_VERIFY=1 node scripts/fetch-feeds.mjs",
     "serve": "pnpm dlx serve ."
   },
   "engines": { "node": ">=18" }

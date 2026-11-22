@@ -230,12 +230,15 @@
             link.textContent = a.title;
             const meta = document.createElement("div");
             meta.className = "meta";
-            const via =
-              a.archiveVia === "wayback"
-                ? "Wayback"
-                : a.archiveVia === "archive.is"
-                  ? "archive.is"
-                  : "";
+            const viaLabels = {
+              "archive.org": "Wayback",
+              "archive.is": "archive.is",
+              "smry.ai": "smry.ai",
+              "1ft.io": "1ft.io",
+              "removepaywall.com": "removepaywall",
+              "removepaywalls.com": "removepaywalls",
+            };
+            const via = a.archiveVia ? (viaLabels[a.archiveVia] ?? a.archiveVia) : "";
             meta.textContent = [a.section, via, a.publishedAt && fmt.format(new Date(a.publishedAt))]
               .filter(Boolean)
               .join(" · ");

@@ -4,7 +4,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { mapPool, probeReadableArchive } from "./archive-probe.mjs";
+import { mapPool, probeReadableProviders } from "./read-providers.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "articles.json");
@@ -152,7 +152,6 @@ async function applyArchiveChecks(articles) {
   const kept = [];
   let dropped = 0;
   let verified = 0;
-  let errors = 0;
   const toProbe = [];
 
   for (const raw of articles) {
@@ -165,7 +164,7 @@ async function applyArchiveChecks(articles) {
   }
 
   const results = await mapPool(toProbe, ARCHIVE_PROBE_CONCURRENCY, ARCHIVE_PROBE_DELAY_MS, (article) =>
-    probeReadableArchive(article.url),
+    probeReadableProviders(article.url, article.title),
   );
 
   for (let i = 0; i < toProbe.length; i++) {
@@ -181,18 +180,13 @@ async function applyArchiveChecks(articles) {
           snapshotUrl: hit.snapshotUrl,
         }),
       );
-    } else if (hit.ok === false) {
-      dropped++;
     } else {
-      errors++;
-      if (base.archived && base.snapshotUrl) {
-        kept.push(withLinks(base));
-      }
+      dropped++;
     }
   }
 
   console.log(
-    `Archive verify: ${verified} ok, ${dropped} hidden (no snapshot), ${errors} probe errors, ${kept.filter((a) => a.free).length} free`,
+    `Read verify: ${verified} ok, ${dropped} hidden (no readable mirror), ${kept.filter((a) => a.free).length} free`,
   );
 
   return kept.sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
