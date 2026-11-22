@@ -298,7 +298,7 @@
       let articles = [];
       /** @type {"24h"|"48h"|"7d"|"all"} */
       let activeTime = "7d";
-      /** @type {"all"|"ksta-plus"} */
+      /** @type {"all"|"paid"|"ksta-plus"} */
       let activeView = "all";
 
       const TIME_OPTIONS = [
@@ -308,7 +308,8 @@
         { id: "all", label: "Alles" },
       ];
       const VIEW_OPTIONS = [
-        { id: "all", label: "Alle Quellen" },
+        { id: "all", label: "Alle" },
+        { id: "paid", label: "Paywall" },
         { id: "ksta-plus", label: "KSTA+" },
       ];
 
@@ -328,7 +329,9 @@
 
       function cutoffMs() {
         const now = Date.now();
-        if (activeView === "ksta-plus") return now - 14 * 24 * 60 * 60 * 1000;
+        if (activeView === "paid" || activeView === "ksta-plus") {
+          return now - 14 * 24 * 60 * 60 * 1000;
+        }
         if (activeTime === "24h") return now - 24 * 60 * 60 * 1000;
         if (activeTime === "48h") return now - 48 * 60 * 60 * 1000;
         if (activeTime === "7d") return now - 7 * 24 * 60 * 60 * 1000;
@@ -339,11 +342,24 @@
         return articleSource(a) === "ksta" && a.access === "paid";
       }
 
+      /** KSTA+ (RSS) or ZEIT without free wire/video path. */
+      function isPaid(a) {
+        if (isKstaPaid(a)) return true;
+        return articleSource(a) === "zeit" && a.free === false;
+      }
+
+      function matchesView(a) {
+        if (activeView === "all") return true;
+        if (activeView === "paid") return isPaid(a);
+        if (activeView === "ksta-plus") return isKstaPaid(a);
+        return true;
+      }
+
       function byTime() {
         const cut = cutoffMs();
         return articles
           .filter((a) => a.publishedAt && new Date(a.publishedAt).getTime() >= cut)
-          .filter((a) => (activeView === "ksta-plus" ? isKstaPaid(a) : true))
+          .filter(matchesView)
           .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
       }
 
@@ -382,7 +398,8 @@
             b.type = "button";
             b.textContent = label;
             b.setAttribute("aria-pressed", String(id === activeView));
-            if (id === "ksta-plus") b.style.borderColor = id === activeView ? "#006994" : "";
+            if (id === "ksta-plus" && id === activeView) b.style.borderColor = "#006994";
+            else b.style.borderColor = "";
             b.onclick = () => {
               activeView = id;
               renderViewFilters();
@@ -437,16 +454,17 @@
           logo.loading = "lazy";
           top.append(logo);
         }
-        if (isKstaPaid(a)) {
-          const plus = document.createElement("span");
-          plus.className = "badge-plus";
-          plus.textContent = "KSTA+";
-          top.append(plus);
-        } else if (a.free) {
+        if (a.free) {
           const badge = document.createElement("span");
           badge.className = "badge-free";
           badge.textContent = "Frei";
           top.append(badge);
+        } else if (isPaid(a)) {
+          const plus = document.createElement("span");
+          plus.className = "badge-plus";
+          plus.style.background = srcId === "zeit" ? "#1a1a1a" : "#006994";
+          plus.textContent = srcId === "zeit" ? "Z+" : "KSTA+";
+          top.append(plus);
         }
         const time = document.createElement("span");
         time.className = "meta";
