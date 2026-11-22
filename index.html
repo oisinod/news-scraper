@@ -230,7 +230,13 @@
             link.textContent = a.title;
             const meta = document.createElement("div");
             meta.className = "meta";
-            meta.textContent = [a.section, a.publishedAt && fmt.format(new Date(a.publishedAt))]
+            const via =
+              a.archiveVia === "wayback"
+                ? "Wayback"
+                : a.archiveVia === "archive.is"
+                  ? "archive.is"
+                  : "";
+            meta.textContent = [a.section, via, a.publishedAt && fmt.format(new Date(a.publishedAt))]
               .filter(Boolean)
               .join(" · ");
             const sub = document.createElement("div");

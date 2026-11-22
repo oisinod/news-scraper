@@ -4,6 +4,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { mapPool, probeReadableArchive } from "./archive-probe.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "articles.json");
@@ -41,6 +42,9 @@ const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
 const RETENTION_DAYS = 7;
 const MAX_ARTICLES = 400;
 const MAX_ITEMS_PER_FEED = 35;
+const ARCHIVE_VERIFY = process.env.ARCHIVE_VERIFY !== "0";
+const ARCHIVE_PROBE_CONCURRENCY = Number(process.env.ARCHIVE_PROBE_CONCURRENCY ?? 3);
+const ARCHIVE_PROBE_DELAY_MS = Number(process.env.ARCHIVE_PROBE_DELAY_MS ?? 800);
 
 const decodeEntities = (s) =>
   s
@@ -115,9 +119,8 @@ function normalizeArticle(a) {
 }
 
 function withLinks(a) {
-  const free =
-    a.source === "ksta" ? a.access === "free" : a.source === "zeit" ? isZeitFree(a.url) : false;
-  const archiveUrl = BYPASS_PREFIX + a.url;
+  const free = isFreeArticle(a);
+  const archiveUrl = a.snapshotUrl ?? BYPASS_PREFIX + a.url;
   return {
     ...a,
     free,
@@ -125,6 +128,74 @@ function withLinks(a) {
     saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
     readUrl: free ? a.url : archiveUrl,
   };
+}
+
+function isFreeArticle(a) {
+  if (a.source === "ksta") return a.access === "free";
+  if (a.source === "zeit") return isZeitFree(a.url);
+  return false;
+}
+
+function stripDerived(a) {
+  const copy = { ...a };
+  delete copy.free;
+  delete copy.archiveUrl;
+  delete copy.saveUrl;
+  delete copy.readUrl;
+  return copy;
+}
+
+/** Drop paywalled items with no working snapshot; refresh snapshotUrl when found. */
+async function applyArchiveChecks(articles) {
+  if (!ARCHIVE_VERIFY) return articles.map((a) => withLinks(stripDerived(a)));
+
+  const kept = [];
+  let dropped = 0;
+  let verified = 0;
+  let errors = 0;
+  const toProbe = [];
+
+  for (const raw of articles) {
+    const base = stripDerived(raw);
+    if (isFreeArticle(base)) {
+      kept.push(withLinks(base));
+      continue;
+    }
+    toProbe.push(base);
+  }
+
+  const results = await mapPool(toProbe, ARCHIVE_PROBE_CONCURRENCY, ARCHIVE_PROBE_DELAY_MS, (article) =>
+    probeReadableArchive(article.url),
+  );
+
+  for (let i = 0; i < toProbe.length; i++) {
+    const base = toProbe[i];
+    const hit = results[i];
+    if (hit.ok === true) {
+      verified++;
+      kept.push(
+        withLinks({
+          ...base,
+          archived: true,
+          archiveVia: hit.via,
+          snapshotUrl: hit.snapshotUrl,
+        }),
+      );
+    } else if (hit.ok === false) {
+      dropped++;
+    } else {
+      errors++;
+      if (base.archived && base.snapshotUrl) {
+        kept.push(withLinks(base));
+      }
+    }
+  }
+
+  console.log(
+    `Archive verify: ${verified} ok, ${dropped} hidden (no snapshot), ${errors} probe errors, ${kept.filter((a) => a.free).length} free`,
+  );
+
+  return kept.sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
 }
 
 async function fetchFeed(feed) {
@@ -187,16 +258,14 @@ async function main() {
     if (!base) continue;
     if (base.source === "ksta" && base.access !== "paid") continue;
     if (base.publishedAt && new Date(base.publishedAt).getTime() < cutoff) continue;
-    delete base.free;
-    delete base.archiveUrl;
-    delete base.saveUrl;
-    delete base.readUrl;
-    byId.set(base.id, withLinks(base));
+    byId.set(base.id, stripDerived(base));
   }
 
-  const articles = [...byId.values()]
+  const merged = [...byId.values()]
     .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""))
     .slice(0, MAX_ARTICLES);
+
+  const articles = await applyArchiveChecks(merged);
 
   await writeFile(
     OUTPUT,
