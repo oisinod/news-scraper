@@ -6,6 +6,10 @@
     <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
     <title>ZEIT &amp; KSTA – Schlagzeilen</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Schlagzeilen" />
+    <link rel="apple-touch-icon" href="assets/icon.svg" />
     <style>
       :root {
         color-scheme: light dark;
@@ -41,8 +45,38 @@
         -webkit-text-size-adjust: 100%;
       }
       .wrap { max-width: 42rem; margin: 0 auto; }
+      header.top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.65rem;
+      }
+      header .head-main { flex: 1; min-width: 0; }
       header h1 { margin: 0; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
       #updated { display: block; margin-top: 0.25rem; color: var(--muted); font-size: 0.8125rem; }
+      #refresh-btn {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        padding: 0.45rem 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--card);
+        color: inherit;
+        font: inherit;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        touch-action: manipulation;
+      }
+      #refresh-btn:disabled { opacity: 0.55; cursor: wait; }
+      #refresh-btn svg { width: 1.1rem; height: 1.1rem; }
+      #refresh-btn[aria-busy="true"] svg { animation: spin 0.75s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
       .filter-block { margin: 1rem 0 0.25rem; }
       .filter-label {
         font-size: 0.75rem;
@@ -168,14 +202,25 @@
           aspect-ratio: 16 / 9;
           max-height: 12rem;
         }
+        #refresh-btn .refresh-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+        #refresh-btn { padding: 0.45rem; }
       }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <header>
-        <h1>Schlagzeilen</h1>
-        <span id="updated"></span>
+      <header class="top">
+        <div class="head-main">
+          <h1>Schlagzeilen</h1>
+          <span id="updated"></span>
+        </div>
+        <button type="button" id="refresh-btn" aria-label="Feed aktualisieren">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+            <path d="M21 3v6h-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="refresh-label">Neu laden</span>
+        </button>
       </header>
       <div class="filter-block">
         <p class="filter-label">Zeitraum</p>
@@ -187,6 +232,8 @@
     <script>
       const feedEl = document.getElementById("feed");
       const timeFiltersEl = document.getElementById("time-filters");
+      const refreshBtn = document.getElementById("refresh-btn");
+      const updatedEl = document.getElementById("updated");
       const timeFmt = new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" });
       const dayFmt = new Intl.DateTimeFormat("de-DE", { weekday: "long", day: "numeric", month: "long" });
       let sources = {};
@@ -362,22 +409,45 @@
         }
       }
 
-      fetch("articles.json", { cache: "no-cache" })
-        .then((r) => r.json())
-        .then((data) => {
+      async function loadArticles({ force = false } = {}) {
+        refreshBtn.disabled = true;
+        refreshBtn.setAttribute("aria-busy", "true");
+        feedEl.setAttribute("aria-busy", "true");
+        try {
+          if (force) {
+            if ("caches" in window) {
+              const keys = await caches.keys();
+              await Promise.all(keys.map((k) => caches.delete(k)));
+            }
+            navigator.serviceWorker?.controller?.postMessage({ type: "CLEAR_CACHES" });
+          }
+          const url = assetUrl(`articles.json${force ? `?t=${Date.now()}` : ""}`);
+          const res = await fetch(url, { cache: "no-store" });
+          if (!res.ok) throw new Error(String(res.status));
+          const data = await res.json();
           sources = Object.fromEntries(
             Object.entries(data.sources ?? {}).map(([id, s]) => [id, { ...s, logo: assetUrl(s.logo) }]),
           );
           articles = data.articles ?? [];
-          document.getElementById("updated").textContent =
-            "Aktualisiert: " + timeFmt.format(new Date(data.updatedAt));
-          feedEl.setAttribute("aria-busy", "false");
-          renderTimeFilters();
+          updatedEl.textContent = "Aktualisiert: " + timeFmt.format(new Date(data.updatedAt));
           renderFeed();
-        })
-        .catch(() => {
+        } catch {
           feedEl.innerHTML = '<p class="empty">Artikel konnten nicht geladen werden.</p>';
-        });
+        } finally {
+          feedEl.setAttribute("aria-busy", "false");
+          refreshBtn.disabled = false;
+          refreshBtn.removeAttribute("aria-busy");
+        }
+      }
+
+      refreshBtn.addEventListener("click", () => loadArticles({ force: true }));
+      renderTimeFilters();
+      loadArticles();
+
+      if ("serviceWorker" in navigator) {
+        const basePath = location.pathname.replace(/\/index\.html$/, "").replace(/\/?$/, "/");
+        navigator.serviceWorker.register(`${basePath}sw.js`, { scope: basePath }).catch(() => {});
+      }
     </script>
   </body>
 </html>
