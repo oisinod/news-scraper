@@ -83,12 +83,9 @@
         color: var(--chip-active-text);
         border-color: var(--chip-active);
       }
-      .chips button img { display: block; height: 1.125rem; width: auto; }
-      .chips button[aria-pressed="true"] img.zeit-inv,
-      .chips button[aria-pressed="true"] img.ksta-inv { filter: brightness(0) invert(1); }
+      .chips button[aria-pressed="true"] img.zeit-inv { filter: brightness(0) invert(1); }
       @media (prefers-color-scheme: dark) {
-        .chips button[aria-pressed="true"] img.zeit-inv,
-        .chips button[aria-pressed="true"] img.ksta-inv { filter: brightness(0); }
+        .chips button[aria-pressed="true"] img.zeit-inv { filter: brightness(0); }
       }
       ul { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
       li {
@@ -98,7 +95,13 @@
         padding: 0.85rem 1rem;
       }
       .row-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
-      .row-top img { height: 1.375rem; width: auto; display: block; }
+      .row-top img, .chips button img.source-logo {
+        height: 1.375rem;
+        width: auto;
+        max-width: 5.5rem;
+        display: block;
+        object-fit: contain;
+      }
       .title {
         display: block;
         color: inherit;
@@ -162,7 +165,13 @@
       let enabledSources = new Set(["zeit", "ksta"]);
       let activeSection = "Alle";
 
-      const logoClass = (id) => (id === "zeit" ? "zeit-inv" : id === "ksta" ? "ksta-inv" : "");
+      const logoClass = (id) => (id === "zeit" ? "zeit-inv source-logo" : "source-logo");
+
+      /** Resolve assets for GitHub Pages (`/news-scraper` without trailing slash). */
+      function assetUrl(path) {
+        const basePath = location.pathname.replace(/\/index\.html$/, "").replace(/\/?$/, "/");
+        return new URL(path, `${location.origin}${basePath}`).href;
+      }
 
       function articleSource(a) {
         if (a.source && sources[a.source]) return a.source;
@@ -201,11 +210,11 @@
             const top = document.createElement("div");
             top.className = "row-top";
             const img = document.createElement("img");
-            img.src = src.logo;
+            img.src = assetUrl(src.logo);
             img.alt = src.name;
-            img.width = 72;
-            img.height = 18;
+            img.className = logoClass(articleSource(a));
             img.loading = "lazy";
+            img.decoding = "async";
             top.append(img);
             if (a.free) {
               const b = document.createElement("span");
@@ -265,7 +274,7 @@
             );
             if (logo) {
               const img = document.createElement("img");
-              img.src = logo;
+              img.src = assetUrl(logo);
               img.alt = "";
               img.className = logoClass(id);
               b.append(img);
@@ -315,7 +324,12 @@
       fetch("articles.json", { cache: "no-cache" })
         .then((r) => r.json())
         .then((data) => {
-          sources = data.sources ?? {};
+          sources = Object.fromEntries(
+            Object.entries(data.sources ?? {}).map(([id, s]) => [
+              id,
+              { ...s, logo: assetUrl(s.logo) },
+            ]),
+          );
           articles = data.articles ?? [];
           document.getElementById("updated").textContent =
             "Aktualisiert: " + fmt.format(new Date(data.updatedAt));

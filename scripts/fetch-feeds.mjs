@@ -31,13 +31,8 @@ const FEEDS = [
   { source: "zeit", section: "Digital", url: "https://newsfeed.zeit.de/digital/index" },
   { source: "zeit", section: "Entdecken", url: "https://newsfeed.zeit.de/entdecken/index" },
   { source: "zeit", section: "Sport", url: "https://newsfeed.zeit.de/sport/index" },
-  { source: "ksta", section: "Panorama", url: "https://feed.ksta.de/feed/rss/panorama/index.rss" },
-  { source: "ksta", section: "Politik", url: "https://feed.ksta.de/feed/rss/politik/index.rss" },
-  { source: "ksta", section: "Wirtschaft", url: "https://feed.ksta.de/feed/rss/wirtschaft/index.rss" },
-  { source: "ksta", section: "Sport", url: "https://feed.ksta.de/feed/rss/sport/index.rss" },
-  { source: "ksta", section: "Kultur", url: "https://feed.ksta.de/feed/rss/kultur-medien/index.rss" },
-  { source: "ksta", section: "Köln", url: "https://feed.ksta.de/feed/rss/koeln/koelner-innenstadt/index.rss" },
-  { source: "ksta", section: "Region", url: "https://feed.ksta.de/feed/rss/region/rhein-erft/index.rss" },
+  // Full index: only paid items are kept (~dozen per refresh; free wire copy is skipped).
+  { source: "ksta", section: "KSTA", url: "https://feed.ksta.de/feed/rss/index.rss", paidOnly: true },
 ];
 
 const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
@@ -82,8 +77,10 @@ function topicSection(item, fallback) {
   return fallback;
 }
 
-function parseItems(xml) {
-  return [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]).slice(0, MAX_ITEMS_PER_FEED);
+function parseItems(xml, feed) {
+  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
+  if (feed.paidOnly) return items;
+  return items.slice(0, MAX_ITEMS_PER_FEED);
 }
 
 function cleanUrl(link) {
@@ -137,7 +134,7 @@ async function fetchFeed(feed) {
   if (!res.ok) throw new Error(`${feed.url} -> HTTP ${res.status}`);
   const xml = await res.text();
 
-  return parseItems(xml).flatMap((item) => {
+  return parseItems(xml, feed).flatMap((item) => {
     const title = tag(item, "title");
     const link = tag(item, "link");
     if (!title || !link) return [];
@@ -146,6 +143,7 @@ async function fetchFeed(feed) {
     const date = new Date(pub);
     const section = topicSection(item, feed.section);
     const access = feed.source === "ksta" ? contentRestriction(item) : null;
+    if (feed.source === "ksta" && access !== "paid") return [];
 
     return [
       {
@@ -187,6 +185,7 @@ async function main() {
   for (const raw of [...(await loadPrevious()), ...fresh]) {
     const base = normalizeArticle(raw);
     if (!base) continue;
+    if (base.source === "ksta" && base.access !== "paid") continue;
     if (base.publishedAt && new Date(base.publishedAt).getTime() < cutoff) continue;
     delete base.free;
     delete base.archiveUrl;
