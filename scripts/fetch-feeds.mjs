@@ -32,8 +32,12 @@ const FEEDS = [
   { source: "zeit", section: "Digital", url: "https://newsfeed.zeit.de/digital/index" },
   { source: "zeit", section: "Entdecken", url: "https://newsfeed.zeit.de/entdecken/index" },
   { source: "zeit", section: "Sport", url: "https://newsfeed.zeit.de/sport/index" },
-  // Full index: only paid items are kept (~dozen per refresh; free wire copy is skipped).
-  { source: "ksta", section: "KSTA", url: "https://feed.ksta.de/feed/rss/index.rss", paidOnly: true },
+  { source: "ksta", section: "Panorama", url: "https://feed.ksta.de/feed/rss/panorama/index.rss" },
+  { source: "ksta", section: "Politik", url: "https://feed.ksta.de/feed/rss/politik/index.rss" },
+  { source: "ksta", section: "Wirtschaft", url: "https://feed.ksta.de/feed/rss/wirtschaft/index.rss" },
+  { source: "ksta", section: "Sport", url: "https://feed.ksta.de/feed/rss/sport/index.rss" },
+  { source: "ksta", section: "Kultur", url: "https://feed.ksta.de/feed/rss/kultur-medien/index.rss" },
+  { source: "ksta", section: "Köln", url: "https://feed.ksta.de/feed/rss/koeln/koelner-innenstadt/index.rss" },
 ];
 
 const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
@@ -99,7 +103,6 @@ function topicSection(item, fallback) {
 
 function parseItems(xml, feed) {
   const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
-  if (feed.paidOnly) return items;
   return items.slice(0, MAX_ITEMS_PER_FEED);
 }
 
@@ -227,8 +230,6 @@ async function fetchFeed(feed) {
     const date = new Date(pub);
     const section = topicSection(item, feed.section);
     const access = feed.source === "ksta" ? contentRestriction(item) : null;
-    if (feed.source === "ksta" && access !== "paid") return [];
-
     return [
       {
         id: `${feed.source}:${url}`,
@@ -270,7 +271,6 @@ async function main() {
   for (const raw of [...(await loadPrevious()), ...fresh]) {
     const base = normalizeArticle(raw);
     if (!base) continue;
-    if (base.source === "ksta" && base.access !== "paid") continue;
     if (base.publishedAt && new Date(base.publishedAt).getTime() < cutoff) continue;
     byId.set(base.id, stripDerived(base));
   }
