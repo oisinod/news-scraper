@@ -1,6 +1,15 @@
 {
-  "updatedAt": "2026-11-22T12:02:44.160Z",
+  "updatedAt": "2026-11-22T12:04:52.666Z",
   "articles": [
+    {
+      "id": "https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
+      "title": "Preis war ihm zu hoch: Mann zahlt Taxi nicht und beleidigt Fahrer und Polizisten",
+      "summary": "",
+      "section": "News",
+      "publishedAt": "2026-11-22T12:00:04.000Z",
+      "url": "https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten",
+      "readUrl": "https://archive.ph/newest/https://www.zeit.de/news/2026-11/22/mann-zahlt-taxi-nicht-und-beleidigt-fahrer-und-polizisten"
+    },
     {
       "id": "https://www.zeit.de/news/2026-11/22/transporter-erfasst-rennradfahrer-und-fluechtet",
       "title": "Ermittlungen laufen: Transporter erfasst Rennradfahrer und flüchtet",
@@ -85,7 +94,7 @@
     {
       "id": "https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
       "title": "Weltklimakonferenz COP31 : EU lehnt COP31-Erklärung ohne Abkehr von fossiler Energie ab",
-      "summary": "Die EU-Länder verweigern ihre Zustimmung zur Abschlusserklärung der Weltklimakonferenz. Sie würden keinen Beschluss akzeptieren, welcher fossile Brennstoffe grünwasche.",
+      "summary": "Die EU-Länder verweigern ihre Zustimmung zur Abschlusserklärung der Weltklimakonferenz. Sie würden keinen Beschluss akzeptieren, die fossile Brennstoffe grünwasche.",
       "section": "Ausland",
       "publishedAt": "2026-11-22T11:28:27.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/weltklimakonferenz-eu-abschlusserklaerung-fossile-brennstoffe-darragh-obrien-gxe",
