@@ -158,22 +158,31 @@
       const fmt = new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" });
       let sources = {};
       let articles = [];
-      let activeSource = "all";
+      /** @type {Set<string>} */
+      let enabledSources = new Set(["zeit", "ksta"]);
       let activeSection = "Alle";
 
       const logoClass = (id) => (id === "zeit" ? "zeit-inv" : id === "ksta" ? "ksta-inv" : "");
 
+      function articleSource(a) {
+        if (a.source && sources[a.source]) return a.source;
+        try {
+          return new URL(a.url).hostname.includes("ksta.de") ? "ksta" : "zeit";
+        } catch {
+          return "zeit";
+        }
+      }
+
       function filtered() {
         return articles.filter((a) => {
-          if (activeSource !== "all" && a.source !== activeSource) return false;
+          if (!enabledSources.has(articleSource(a))) return false;
           if (activeSection !== "Alle" && a.section !== activeSection) return false;
           return true;
         });
       }
 
       function sectionOptions() {
-        const pool =
-          activeSource === "all" ? articles : articles.filter((a) => a.source === activeSource);
+        const pool = articles.filter((a) => enabledSources.has(articleSource(a)));
         return ["Alle", ...new Set(pool.map((a) => a.section).filter(Boolean)).values()].sort((a, b) =>
           a === "Alle" ? -1 : b === "Alle" ? 1 : a.localeCompare(b, "de"),
         );
@@ -188,7 +197,7 @@
         listEl.replaceChildren(
           ...shown.map((a) => {
             const li = document.createElement("li");
-            const src = sources[a.source];
+            const src = sources[articleSource(a)] ?? sources.zeit;
             const top = document.createElement("div");
             top.className = "row-top";
             const img = document.createElement("img");
@@ -241,15 +250,19 @@
       }
 
       function renderSourceFilters() {
-        const items = [
-          { id: "all", label: "Alle" },
-          ...Object.entries(sources).map(([id, s]) => ({ id, label: s.shortName, logo: s.logo })),
-        ];
+        const ids = Object.keys(sources);
+        const bothOn = ids.length > 0 && ids.every((id) => enabledSources.has(id));
         sourceFiltersEl.replaceChildren(
-          ...items.map(({ id, label, logo }) => {
+          ...[
+            { id: "__both__", label: "Beide", logo: null },
+            ...Object.entries(sources).map(([id, s]) => ({ id, label: s.shortName, logo: s.logo })),
+          ].map(({ id, label, logo }) => {
             const b = document.createElement("button");
             b.type = "button";
-            b.setAttribute("aria-pressed", String(id === activeSource));
+            b.setAttribute(
+              "aria-pressed",
+              String(id === "__both__" ? bothOn : enabledSources.has(id)),
+            );
             if (logo) {
               const img = document.createElement("img");
               img.src = logo;
@@ -259,7 +272,17 @@
             }
             b.append(label);
             b.onclick = () => {
-              activeSource = id;
+              if (id === "__both__") {
+                enabledSources = new Set(ids);
+              } else if (enabledSources.has(id) && enabledSources.size === 1) {
+                return;
+              } else if (bothOn) {
+                enabledSources = new Set([id]);
+              } else if (enabledSources.has(id)) {
+                enabledSources.delete(id);
+              } else {
+                enabledSources.add(id);
+              }
               activeSection = "Alle";
               renderSourceFilters();
               renderSectionFilters();

@@ -95,6 +95,28 @@ function isZeitFree(url) {
   return /^\/(news|video)\//.test(new URL(url).pathname);
 }
 
+function inferSource(url, hint) {
+  if (hint && SOURCES[hint]) return hint;
+  try {
+    if (new URL(url).hostname.includes("ksta.de")) return "ksta";
+  } catch {
+    /* ignore */
+  }
+  return "zeit";
+}
+
+/** Migrate older articles.json rows (missing source / url-only id). */
+function normalizeArticle(a) {
+  const url = a.url;
+  if (!url) return null;
+  const source = inferSource(url, a.source);
+  return {
+    ...a,
+    source,
+    id: `${source}:${url}`,
+  };
+}
+
 function withLinks(a) {
   const free =
     a.source === "ksta" ? a.access === "free" : a.source === "zeit" ? isZeitFree(a.url) : false;
@@ -163,13 +185,14 @@ async function main() {
   const cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
   const byId = new Map();
   for (const raw of [...(await loadPrevious()), ...fresh]) {
-    if (raw.publishedAt && new Date(raw.publishedAt).getTime() < cutoff) continue;
-    const a = { ...raw };
-    delete a.free;
-    delete a.archiveUrl;
-    delete a.saveUrl;
-    delete a.readUrl;
-    byId.set(a.id, withLinks(a));
+    const base = normalizeArticle(raw);
+    if (!base) continue;
+    if (base.publishedAt && new Date(base.publishedAt).getTime() < cutoff) continue;
+    delete base.free;
+    delete base.archiveUrl;
+    delete base.saveUrl;
+    delete base.readUrl;
+    byId.set(base.id, withLinks(base));
   }
 
   const articles = [...byId.values()]
