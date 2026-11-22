@@ -24,7 +24,7 @@ const FEEDS = [
 // byebyepaywall.com is a launcher for third-party services and has no deep-link
 // scheme of its own, so the prefix of the chosen service is prepended to the URL.
 // Override via env var BYPASS_PREFIX.
-const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.ph/newest/";
+const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
 
 const RETENTION_DAYS = 7;
 const MAX_ARTICLES = 300;
