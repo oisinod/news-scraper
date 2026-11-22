@@ -38,12 +38,19 @@ const FEEDS = [
   { source: "ksta", section: "Sport", url: "https://feed.ksta.de/feed/rss/sport/index.rss" },
   { source: "ksta", section: "Kultur", url: "https://feed.ksta.de/feed/rss/kultur-medien/index.rss" },
   { source: "ksta", section: "Köln", url: "https://feed.ksta.de/feed/rss/koeln/koelner-innenstadt/index.rss" },
+  // Full index scan: all KSTA+ (paid) items — only ~dozen in the whole feed.
+  {
+    source: "ksta",
+    section: "KSTA+",
+    url: "https://feed.ksta.de/feed/rss/index.rss",
+    kstaPaidScan: true,
+  },
 ];
 
 const BYPASS_PREFIX = process.env.BYPASS_PREFIX ?? "https://archive.is/newest/";
 const SAVE_PREFIX = process.env.SAVE_PREFIX ?? "https://archive.is/?run=1&url=";
 
-const RETENTION_DAYS = 7;
+const RETENTION_DAYS = Number(process.env.RETENTION_DAYS ?? 14);
 const MAX_ARTICLES = 400;
 const MAX_ITEMS_PER_FEED = 35;
 // Drop items without a readable mirror only when "1". Default: show full feed.
@@ -103,6 +110,9 @@ function topicSection(item, fallback) {
 
 function parseItems(xml, feed) {
   const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
+  if (feed.kstaPaidScan) {
+    return items.filter((item) => contentRestriction(item) === "paid");
+  }
   return items.slice(0, MAX_ITEMS_PER_FEED);
 }
 

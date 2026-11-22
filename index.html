@@ -43,6 +43,30 @@
         padding: max(0.75rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right))
           max(1.25rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
         -webkit-text-size-adjust: 100%;
+        overscroll-behavior-y: contain;
+      }
+      #ptr {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: max(0.35rem, env(safe-area-inset-top));
+        z-index: 20;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-120%);
+        transition: opacity 0.15s ease;
+      }
+      #ptr.visible { opacity: 1; }
+      #ptr-inner {
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        font-size: 0.8rem;
+        color: var(--muted);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
       .wrap { max-width: 42rem; margin: 0 auto; }
       header.top {
@@ -137,6 +161,7 @@
         gap: 0.75rem;
         align-items: start;
       }
+      li.card.src-ksta { border-left: 4px solid #006994; }
       li.card:not(.has-thumb) { grid-template-columns: 1fr; }
       .thumb-wrap { display: block; }
       .thumb {
@@ -191,6 +216,15 @@
       @media (prefers-color-scheme: dark) {
         .badge-free { color: #86efac; background: #14532d; }
       }
+      .badge-plus {
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        background: #006994;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+      }
       .empty { padding: 2rem 1rem; text-align: center; color: var(--muted); }
       @media (max-width: 520px) {
         li.card.has-thumb {
@@ -208,6 +242,7 @@
     </style>
   </head>
   <body>
+    <div id="ptr" aria-hidden="true"><div id="ptr-inner">Zum Aktualisieren loslassen</div></div>
     <div class="wrap">
       <header class="top">
         <div class="head-main">
@@ -226,26 +261,39 @@
         <p class="filter-label">Zeitraum</p>
         <div id="time-filters" class="chips" role="group" aria-label="Zeitraum"></div>
       </div>
+      <div class="filter-block">
+        <p class="filter-label">Anzeige</p>
+        <div id="view-filters" class="chips" role="group" aria-label="Anzeige"></div>
+      </div>
       <div id="feed" class="feed" role="feed" aria-busy="true"><p class="empty">Lade …</p></div>
     </div>
 
     <script>
       const feedEl = document.getElementById("feed");
       const timeFiltersEl = document.getElementById("time-filters");
+      const viewFiltersEl = document.getElementById("view-filters");
       const refreshBtn = document.getElementById("refresh-btn");
       const updatedEl = document.getElementById("updated");
+      const ptrEl = document.getElementById("ptr");
+      const ptrInner = document.getElementById("ptr-inner");
       const timeFmt = new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short" });
       const dayFmt = new Intl.DateTimeFormat("de-DE", { weekday: "long", day: "numeric", month: "long" });
       let sources = {};
       let articles = [];
       /** @type {"24h"|"48h"|"7d"|"all"} */
       let activeTime = "7d";
+      /** @type {"all"|"ksta-plus"} */
+      let activeView = "all";
 
       const TIME_OPTIONS = [
         { id: "24h", label: "24 Stunden" },
         { id: "48h", label: "48 Stunden" },
         { id: "7d", label: "7 Tage" },
         { id: "all", label: "Alles" },
+      ];
+      const VIEW_OPTIONS = [
+        { id: "all", label: "Alle Quellen" },
+        { id: "ksta-plus", label: "KSTA+" },
       ];
 
       function assetUrl(path) {
@@ -264,16 +312,22 @@
 
       function cutoffMs() {
         const now = Date.now();
+        if (activeView === "ksta-plus") return now - 14 * 24 * 60 * 60 * 1000;
         if (activeTime === "24h") return now - 24 * 60 * 60 * 1000;
         if (activeTime === "48h") return now - 48 * 60 * 60 * 1000;
         if (activeTime === "7d") return now - 7 * 24 * 60 * 60 * 1000;
         return 0;
       }
 
+      function isKstaPaid(a) {
+        return articleSource(a) === "ksta" && a.access === "paid";
+      }
+
       function byTime() {
         const cut = cutoffMs();
         return articles
           .filter((a) => a.publishedAt && new Date(a.publishedAt).getTime() >= cut)
+          .filter((a) => (activeView === "ksta-plus" ? isKstaPaid(a) : true))
           .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
       }
 
@@ -305,9 +359,29 @@
         );
       }
 
+      function renderViewFilters() {
+        viewFiltersEl.replaceChildren(
+          ...VIEW_OPTIONS.map(({ id, label }) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.textContent = label;
+            b.setAttribute("aria-pressed", String(id === activeView));
+            if (id === "ksta-plus") b.style.borderColor = id === activeView ? "#006994" : "";
+            b.onclick = () => {
+              activeView = id;
+              renderViewFilters();
+              renderTimeFilters();
+              renderFeed();
+            };
+            return b;
+          }),
+        );
+      }
+
       function buildCard(a) {
+        const srcId = articleSource(a);
         const li = document.createElement("li");
-        li.className = "card" + (a.image ? " has-thumb" : "");
+        li.className = "card" + (a.image ? " has-thumb" : "") + (srcId === "ksta" ? " src-ksta" : "");
         const body = document.createElement("div");
         const src = sources[articleSource(a)] ?? sources.zeit;
 
@@ -337,10 +411,15 @@
         const logo = document.createElement("img");
         logo.src = assetUrl(src.logo);
         logo.alt = src.name;
-        logo.className = articleSource(a) === "zeit" ? "source-logo zeit-inv" : "source-logo";
+        logo.className = srcId === "zeit" ? "source-logo zeit-inv" : "source-logo";
         logo.loading = "lazy";
         top.append(logo);
-        if (a.free) {
+        if (isKstaPaid(a)) {
+          const plus = document.createElement("span");
+          plus.className = "badge-plus";
+          plus.textContent = "KSTA+";
+          top.append(plus);
+        } else if (a.free) {
           const badge = document.createElement("span");
           badge.className = "badge-free";
           badge.textContent = "Frei";
@@ -441,7 +520,43 @@
       }
 
       refreshBtn.addEventListener("click", () => loadArticles({ force: true }));
+
+      let ptrStartY = 0;
+      let ptrPull = 0;
+      let ptrActive = false;
+      const PTR_TRIGGER = 72;
+
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          if (window.scrollY > 4 || refreshBtn.disabled) return;
+          ptrStartY = e.touches[0].clientY;
+          ptrActive = true;
+        },
+        { passive: true },
+      );
+      document.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!ptrActive) return;
+          ptrPull = Math.max(0, e.touches[0].clientY - ptrStartY);
+          if (ptrPull > 8) {
+            ptrEl.classList.add("visible");
+            ptrInner.textContent =
+              ptrPull >= PTR_TRIGGER ? "Loslassen zum Aktualisieren" : "Nach unten ziehen …";
+          }
+        },
+        { passive: true },
+      );
+      document.addEventListener("touchend", () => {
+        if (ptrActive && ptrPull >= PTR_TRIGGER) loadArticles({ force: true });
+        ptrActive = false;
+        ptrPull = 0;
+        ptrEl.classList.remove("visible");
+      });
+
       renderTimeFilters();
+      renderViewFilters();
       loadArticles();
 
       if ("serviceWorker" in navigator) {
