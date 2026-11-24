@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T10:17:48.052Z",
+  "updatedAt": "2026-11-24T10:24:20.428Z",
   "sources": {
     "zeit": {
       "name": "DIE ZEIT",
@@ -29,6 +29,21 @@
       "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/sachsens-teurer-stollen-transport-nach-rom-1423744",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Fsachsens-teurer-stollen-transport-nach-rom-1423744",
       "readUrl": "https://www.ksta.de/politik/sachsens-teurer-stollen-transport-nach-rom-1423744"
+    },
+    {
+      "id": "ksta:https://www.ksta.de/sport/1-fc-koeln/alessio-castro-montes-faellt-beim-1-fc-koeln-vorerst-aus-1423780",
+      "source": "ksta",
+      "title": "Nach Trainingsverletzung: Castro-Montes fällt beim FC vorerst aus",
+      "summary": "Rückschlag für den 1. FC Köln vor dem Heimspiel gegen Elversberg: Alessio Castro-Montes fällt verletzt aus. Bei zwei Profis gibt es Entwarnung.",
+      "section": "Sport",
+      "publishedAt": "2026-11-24T10:14:45.879Z",
+      "url": "https://www.ksta.de/sport/1-fc-koeln/alessio-castro-montes-faellt-beim-1-fc-koeln-vorerst-aus-1423780",
+      "access": "free",
+      "image": "https://image.ds.dumont.de/2026/11/24/dd3e526c-5df2-4763-9649-71cb515cdc70.jpg?w=3928&auto=format&q=75&format=auto&s=492add1dfeb124519c04b405a2d04af0",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/sport/1-fc-koeln/alessio-castro-montes-faellt-beim-1-fc-koeln-vorerst-aus-1423780",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fsport%2F1-fc-koeln%2Falessio-castro-montes-faellt-beim-1-fc-koeln-vorerst-aus-1423780",
+      "readUrl": "https://www.ksta.de/sport/1-fc-koeln/alessio-castro-montes-faellt-beim-1-fc-koeln-vorerst-aus-1423780"
     },
     {
       "id": "ksta:https://www.ksta.de/politik/polizeisoftware-nrw-ersetzt-palantir-durch-deutschen-anbieter-celonis-1423525",
@@ -724,7 +739,7 @@
       "id": "zeit:https://www.zeit.de/politik/ausland/2026-11/gianni-de-gennaro-polizeichef-suizid-italien-5vor8",
       "source": "zeit",
       "title": "Gianni De Gennaro: Sein Tod erschüttert Italien",
-      "summary": "Der Suizid des Polizeichefs Giovanni De Gennaro bewegt das Land – und erinnert an die Mafiaattentate der Neunziger. Das Fundament der italienischen Republik bröckelt.",
+      "summary": "Der Suizid des Polizeichefs Gianni De Gennaro bewegt das ganze Land – und erinnert an die Mafiaattentate der Neunziger. Das Fundament der italienischen Republik bröckelt.",
       "section": "Ausland",
       "publishedAt": "2026-11-24T06:36:50.000Z",
       "url": "https://www.zeit.de/politik/ausland/2026-11/gianni-de-gennaro-polizeichef-suizid-italien-5vor8",
@@ -809,51 +824,6 @@
       "archiveUrl": "https://archive.is/newest/https://www.zeit.de/news/2026-11/24/vng-sichert-sich-erdgas-aus-norwegen-bis-2044",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fnews%2F2026-11%2F24%2Fvng-sichert-sich-erdgas-aus-norwegen-bis-2044",
       "readUrl": "https://www.zeit.de/news/2026-11/24/vng-sichert-sich-erdgas-aus-norwegen-bis-2044"
-    },
-    {
-      "id": "ksta:https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
-      "source": "ksta",
-      "title": "Coesfelder Liste: Köln rechtfertigt Abschiebe-Panne mit falschem Dienstweg",
-      "summary": "NRW-Fluchtministerin Schäffer widerspricht der Kölner Stadtverwaltung im Streit um eine Liste mit ausreisepflichtigen Migranten.",
-      "section": "Politik",
-      "publishedAt": "2026-11-24T06:24:33.833Z",
-      "url": "https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
-      "access": "free",
-      "image": "https://image.ds.dumont.de/2026/11/23/8d40fcc4-71bb-4c5d-873b-526bfba47095.jpg?w=4000&auto=format&q=75&format=auto&s=945dc3c67303818d71ec54cd23ed5131",
-      "free": true,
-      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
-      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Fliste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
-      "readUrl": "https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506"
-    },
-    {
-      "id": "ksta:https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
-      "source": "ksta",
-      "title": "Streit in der Koalition: CDU erklärt Rentenreform zur Mutprobe für die SPD",
-      "summary": "Die CDU fordert von der SPD mehr Tempo bei der Rentenreform. Generalsekretärin Hoppermann mahnt Arbeitsminister Schweitzer zu mehr Mut.",
-      "section": "Politik",
-      "publishedAt": "2026-11-24T06:22:27.129Z",
-      "url": "https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
-      "access": "free",
-      "image": "https://image.ds.dumont.de/2026/11/23/f6371829-d1e0-4777-8671-8ab0d605ef78.jpg?w=4000&auto=format&q=75&format=auto&s=6af020221604f7ef81e09386f7ae6a39",
-      "free": true,
-      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
-      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Frentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
-      "readUrl": "https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412"
-    },
-    {
-      "id": "ksta:https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
-      "source": "ksta",
-      "title": "Dem Wald geht's wieder schlechter: Die Buche hat Sonnenbrand",
-      "summary": "Der aktuelle Waldzustandsbericht für NRW zeigt eine deutliche Verschlechterung. Besonders Buchen und Eichen leiden unter Hitze und Trockenheit.",
-      "section": "Politik",
-      "publishedAt": "2026-11-24T06:20:17.981Z",
-      "url": "https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
-      "access": "free",
-      "image": "https://image.ds.dumont.de/2026/11/23/4d2a38ac-5159-4717-b1cf-01aa17a822f1.jpg?w=4000&auto=format&q=75&format=auto&s=4a5a3f715fcd9d46033fcb232dfbd30c",
-      "free": true,
-      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
-      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpanorama%2Fwaldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
-      "readUrl": "https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162"
     },
     {
       "id": "zeit:https://www.zeit.de/news/2026-11/24/zwei-verdaechtige-nach-einbruchsserie-in-haft",
@@ -991,21 +961,6 @@
       "readUrl": "https://www.ksta.de/panorama/promis/gen-z-debatte-bei-die-100-work-life-balance-20-stunden-teilzeit-bei-vollem-verdienst-1423610"
     },
     {
-      "id": "ksta:https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
-      "source": "ksta",
-      "title": "Hieb gegen Merz: Markus Söder kann es nicht lassen",
-      "summary": "Noch ist der Unmut über das Hickhack bei der Stromsteuer nicht verwunden, da gerät Friedrich Merz schon wieder unter Druck. Wenn sein Autoritätsverlust und das Chaos in der Koalition so weitergehen, droht 2027 ein Desaster.",
-      "section": "Politik",
-      "publishedAt": "2026-11-24T05:16:33.345Z",
-      "url": "https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
-      "access": "free",
-      "image": "https://image.ds.dumont.de/2026/11/23/91cacae9-4492-4d5b-b503-6df3d931770b.jpg?w=2048&auto=format&q=75&format=auto&s=ba0fd59af5026a47da8c4398beb6603a",
-      "free": true,
-      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
-      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Fder-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
-      "readUrl": "https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291"
-    },
-    {
       "id": "ksta:https://www.ksta.de/wirtschaft/koeln-ist-spitzenreiter-bei-schaeden-durch-autodiebstahl-1423628",
       "source": "ksta",
       "title": "Kfz-Diebstahlstatistik: Köln ist Spitzenreiter bei Schäden durch Autodiebstahl",
@@ -1139,6 +1094,21 @@
       "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/sexismus-bundeskriminalamt-bka-bundespolizei-polizei",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2026-11%2Fsexismus-bundeskriminalamt-bka-bundespolizei-polizei",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/deutschland/2026-11/sexismus-bundeskriminalamt-bka-bundespolizei-polizei"
+    },
+    {
+      "id": "ksta:https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
+      "source": "ksta",
+      "title": "Koalitionsstreit: CDU erklärt Rentenreform zur Mutprobe für die SPD",
+      "summary": "Die CDU fordert von der SPD mehr Tempo bei der Rentenreform. Generalsekretärin Hoppermann mahnt Arbeitsminister Schweitzer zu mehr Mut.",
+      "section": "Politik",
+      "publishedAt": "2026-11-24T00:00:00.000Z",
+      "url": "https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
+      "access": "free",
+      "image": "https://image.ds.dumont.de/2026/11/23/f6371829-d1e0-4777-8671-8ab0d605ef78.jpg?w=4000&auto=format&q=75&format=auto&s=6af020221604f7ef81e09386f7ae6a39",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Frentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412",
+      "readUrl": "https://www.ksta.de/politik/rentenreform-cdu-generalsekretaerin-hoppermann-kritisiert-spd-1423412"
     },
     {
       "id": "zeit:https://www.zeit.de/politik/deutschland/2026-11/kalte-progression-steuern-markus-soeder-michael-kretschmer-boris-rhein",
@@ -1486,6 +1456,21 @@
       "readUrl": "https://archive.is/newest/https://www.zeit.de/gesellschaft/zeitgeschehen/2026-11/greta-thunberg-hausfriedensbruch-daenemark-kopenhagen-protest-gxe"
     },
     {
+      "id": "ksta:https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
+      "source": "ksta",
+      "title": "Coesfeld-Liste: Ärger um den Dienstweg",
+      "summary": "NRW-Fluchtministerin Schäffer widerspricht der Kölner Stadtverwaltung im Streit um eine Liste mit ausreisepflichtigen Migranten.",
+      "section": "Politik",
+      "publishedAt": "2026-11-23T18:24:35.624Z",
+      "url": "https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
+      "access": "free",
+      "image": "https://image.ds.dumont.de/2026/11/23/8d40fcc4-71bb-4c5d-873b-526bfba47095.jpg?w=4000&auto=format&q=75&format=auto&s=945dc3c67303818d71ec54cd23ed5131",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Fliste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506",
+      "readUrl": "https://www.ksta.de/politik/liste-coesfeld-nrw-ministerin-widerspricht-koelner-stadtverwaltung-1423506"
+    },
+    {
       "id": "zeit:https://www.zeit.de/sport/2026-11/fussball-weltmeisterschaft-frauen-2031-usa-mexiko-grossbritannien-fifa",
       "source": "zeit",
       "title": "Fifa: USA und Großbritannien richten Fußball-WM der Frauen 2031 und 2035 aus",
@@ -1499,6 +1484,21 @@
       "archiveUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fussball-weltmeisterschaft-frauen-2031-usa-mexiko-grossbritannien-fifa",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fsport%2F2026-11%2Ffussball-weltmeisterschaft-frauen-2031-usa-mexiko-grossbritannien-fifa",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/sport/2026-11/fussball-weltmeisterschaft-frauen-2031-usa-mexiko-grossbritannien-fifa"
+    },
+    {
+      "id": "ksta:https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
+      "source": "ksta",
+      "title": "NRW-Zustandsbericht 2026: Dem Wald geht's wieder schlechter: Die Buche hat Sonnenbrand",
+      "summary": "Der aktuelle Waldzustandsbericht für NRW zeigt eine deutliche Verschlechterung. Besonders Buchen und Eichen leiden unter Hitze und Trockenheit.",
+      "section": "Politik",
+      "publishedAt": "2026-11-23T18:16:24.000Z",
+      "url": "https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
+      "access": "free",
+      "image": "https://image.ds.dumont.de/2026/11/23/4d2a38ac-5159-4717-b1cf-01aa17a822f1.jpg?w=4000&auto=format&q=75&format=auto&s=4a5a3f715fcd9d46033fcb232dfbd30c",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpanorama%2Fwaldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162",
+      "readUrl": "https://www.ksta.de/panorama/waldzustandsbericht-nrw-buchen-und-eichen-leiden-unter-hitze-1423162"
     },
     {
       "id": "zeit:https://www.zeit.de/politik/deutschland/2026-11/rentenreform-thorsten-frei-markus-soeder-abschlaege-rente",
@@ -1574,6 +1574,21 @@
       "archiveUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/russland-satellit-nuklearwaffe-weltraum-orbit-usa-nato",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fausland%2F2026-11%2Frussland-satellit-nuklearwaffe-weltraum-orbit-usa-nato",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/politik/ausland/2026-11/russland-satellit-nuklearwaffe-weltraum-orbit-usa-nato"
+    },
+    {
+      "id": "ksta:https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
+      "source": "ksta",
+      "title": "Nächster Hieb gegen Merz: Markus Söder kann es nicht lassen",
+      "summary": "Noch ist der Unmut über das Hickhack bei der Stromsteuer nicht verwunden, da gerät Friedrich Merz schon wieder unter Druck. Wenn sein Autoritätsverlust und das Chaos in der Koalition so weitergehen, droht 2027 ein Desaster.",
+      "section": "Politik",
+      "publishedAt": "2026-11-23T17:45:00.000Z",
+      "url": "https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
+      "access": "free",
+      "image": "https://image.ds.dumont.de/2026/11/23/91cacae9-4492-4d5b-b503-6df3d931770b.jpg?w=2048&auto=format&q=75&format=auto&s=ba0fd59af5026a47da8c4398beb6603a",
+      "free": true,
+      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
+      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fpolitik%2Fder-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291",
+      "readUrl": "https://www.ksta.de/politik/der-naechste-hieb-gegen-friedrich-merz-markus-soeder-kann-es-nicht-lassen-1423291"
     },
     {
       "id": "zeit:https://www.zeit.de/politik/deutschland/2026-11/ministerpraesidentenwahl-sachsen-anhalt-linke-soeren-pellmann-heidi-reichinnek-magdeburg",
@@ -5800,7 +5815,7 @@
     {
       "id": "zeit:https://www.zeit.de/digital/2026-11/ki-wettrennen-china-usa-nvidia-chipfabriken-taiwan",
       "source": "zeit",
-      "title": "KI-Wettrennen: #4 Trump, Xi und der Kampf um die KI‑Weltherrschaft",
+      "title": "KI-Wettrennen: #4 Superchips nach China exportieren? Eigentlich verboten",
       "summary": "Der Kampf um die KI-Weltherrschaft: Wie Nvidia und die geschäftstüchtige Alice Huang Schlupflöcher für sich zu nutzen wissen. Die neueste Podcast-Folge »Der Fall Nvidia«",
       "section": "Digital",
       "publishedAt": "2026-11-21T10:34:47.000Z",
@@ -5976,21 +5991,6 @@
       "archiveUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/plastikmuell-export-eu-oecd-ausfuhr-verbot-gxe",
       "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.zeit.de%2Fwirtschaft%2F2026-11%2Fplastikmuell-export-eu-oecd-ausfuhr-verbot-gxe",
       "readUrl": "https://archive.is/newest/https://www.zeit.de/wirtschaft/2026-11/plastikmuell-export-eu-oecd-ausfuhr-verbot-gxe"
-    },
-    {
-      "id": "ksta:https://www.ksta.de/koeln/fachkraeftemangel-in-koeln-unternehmen-suchen-personal-im-ausland-1419577",
-      "source": "ksta",
-      "title": "Für ein Fünftel der offenen Stellen fehlen Experten: Wie Kölner Unternehmen gezielt internationale Fachkräfte gewinnen",
-      "summary": "Kölner Betriebe suchen wegen des Fachkräftemangels verstärkt Nachwuchs im Ausland. So verlief das Netzwerktreffen.",
-      "section": "Wirtschaft",
-      "publishedAt": "2026-11-21T07:30:00.000Z",
-      "url": "https://www.ksta.de/koeln/fachkraeftemangel-in-koeln-unternehmen-suchen-personal-im-ausland-1419577",
-      "access": "free",
-      "image": "https://image.ds.dumont.de/2024/10/31/8e5e5b3d-dbad-455a-bf81-8a72a1267bb0.jpeg?w=4000&auto=format&q=75&format=auto&s=ada602bdae5bcce32ac5af9dc9f43833",
-      "free": true,
-      "archiveUrl": "https://archive.is/newest/https://www.ksta.de/koeln/fachkraeftemangel-in-koeln-unternehmen-suchen-personal-im-ausland-1419577",
-      "saveUrl": "https://archive.is/?run=1&url=https%3A%2F%2Fwww.ksta.de%2Fkoeln%2Ffachkraeftemangel-in-koeln-unternehmen-suchen-personal-im-ausland-1419577",
-      "readUrl": "https://www.ksta.de/koeln/fachkraeftemangel-in-koeln-unternehmen-suchen-personal-im-ausland-1419577"
     }
   ]
 }
