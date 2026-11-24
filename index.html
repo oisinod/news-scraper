@@ -329,18 +329,25 @@
         return Number.isNaN(d.getTime()) ? "" : timeFmt.format(d);
       }
 
-      /** iOS PWA often ignores target="_blank"; open explicitly with fallback. */
-      function openExternal(href) {
-        try {
-          const w = window.open(href, "_blank", "noopener,noreferrer");
-          if (w) {
-            w.opener = null;
-            return;
-          }
-        } catch {
-          /* standalone web app */
-        }
-        window.location.assign(href);
+      function needsOpenLauncher() {
+        return (
+          window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+          window.matchMedia("(display-mode: standalone)").matches ||
+          navigator.standalone === true
+        );
+      }
+
+      function articleOpenUrl(a) {
+        if (a.free) return a.readUrl || a.url;
+        if (!needsOpenLauncher()) return a.readUrl || a.url;
+        const mirror = a.snapshotUrl || a.readUrl || a.archiveUrl || "";
+        const orig = a.url || "";
+        const save = a.saveUrl || "";
+        const p = new URLSearchParams();
+        if (mirror) p.set("m", mirror);
+        if (orig) p.set("o", orig);
+        if (save) p.set("s", save);
+        return assetUrl(`open.html?${p.toString()}`);
       }
 
       function articleSource(a) {
@@ -447,7 +454,7 @@
         if (a.image) {
           const wrap = document.createElement("a");
           wrap.className = "thumb-wrap";
-          wrap.href = a.readUrl;
+          wrap.href = articleOpenUrl(a);
           wrap.target = "_blank";
           wrap.rel = "noopener noreferrer";
           const thumb = document.createElement("img");
@@ -499,8 +506,9 @@
 
         const link = document.createElement("a");
         link.className = "title";
-        link.href = a.readUrl;
-        link.target = "_blank";
+        const dest = articleOpenUrl(a);
+        link.href = dest;
+        link.target = a.free || !needsOpenLauncher() ? "_blank" : "_self";
         link.rel = "noopener noreferrer";
         link.textContent = a.title;
 
@@ -603,19 +611,6 @@
       }
 
       refreshBtn.addEventListener("click", () => loadArticles({ force: true }));
-
-      feedEl.addEventListener(
-        "click",
-        (e) => {
-          const link = e.target.closest("a[href]");
-          if (!link || !feedEl.contains(link)) return;
-          const href = link.getAttribute("href");
-          if (!href || !/^https?:/i.test(href)) return;
-          e.preventDefault();
-          openExternal(href);
-        },
-        true,
-      );
 
       let ptrStartY = 0;
       let ptrPull = 0;

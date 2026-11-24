@@ -1,7 +1,8 @@
-const SHELL_CACHE = "news-scraper-shell-v6";
+const SHELL_CACHE = "news-scraper-shell-v7";
 
 const shellUrls = (base) => [
   `${base}index.html`,
+  `${base}open.html`,
   `${base}assets/zeit.svg`,
   `${base}assets/ksta.svg`,
   `${base}manifest.webmanifest`,

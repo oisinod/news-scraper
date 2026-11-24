@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Artikel öffnen</title>
+    <style>
+      body {
+        margin: 0;
+        font: 1.05rem/1.45 system-ui, -apple-system, sans-serif;
+        padding: max(1.25rem, env(safe-area-inset-top)) 1.25rem 2rem;
+        background: #f4f4f5;
+      }
+      h1 { font-size: 1.2rem; margin: 0 0 0.5rem; }
+      p { color: #5c6370; margin: 0 0 1.25rem; }
+      .btn {
+        display: block;
+        margin: 0 0 0.75rem;
+        padding: 1rem 1.1rem;
+        border-radius: 12px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 700;
+        color: #fff;
+        touch-action: manipulation;
+      }
+      .btn-mirror { background: #006994; }
+      .btn-original { background: #222; }
+      .btn-archive { background: #444; }
+    </style>
+  </head>
+  <body>
+    <h1>Artikel öffnen</h1>
+    <p id="hint">Tippe eine Option — sie öffnet sich im Browser, nicht in der App.</p>
+    <a class="btn btn-mirror" id="mirror" href="#" target="_blank" rel="noopener noreferrer" hidden
+      >Leseservice (Archiv / Spiegel)</a
+    >
+    <a class="btn btn-original" id="original" href="#" target="_blank" rel="noopener noreferrer" hidden
+      >Original (Zeitung)</a
+    >
+    <a class="btn btn-archive" id="save" href="#" target="_blank" rel="noopener noreferrer" hidden
+      >Bei archive.is neu archivieren</a
+    >
+    <script>
+      const q = new URLSearchParams(location.search);
+      const mirror = q.get("m");
+      const orig = q.get("o");
+      const save = q.get("s");
+      const show = (id, url) => {
+        if (!url) return;
+        const el = document.getElementById(id);
+        el.href = url;
+        el.hidden = false;
+      };
+      if (mirror && !/archive\.is\/newest\//.test(mirror)) show("mirror", mirror);
+      else if (mirror) show("mirror", orig);
+      show("original", orig);
+      show("save", save);
+      if (!mirror && !orig && !save) {
+        document.getElementById("hint").textContent = "Kein Artikel-Link übergeben.";
+      }
+    </script>
+  </body>
+</html>
