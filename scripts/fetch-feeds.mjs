@@ -5,16 +5,6 @@ import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { mapPool, probeArchiveIs } from "./archive-probe.mjs";
-import { probeReadableProviders } from "./read-providers.mjs";
-
-/** Prefer archive.is; otherwise try byebyepaywall mirrors. */
-async function resolvePaywallRead(article) {
-  const arch = await probeArchiveIs(article.url);
-  if (arch.ok === true) return arch;
-  const mirrors = await probeReadableProviders(article.url, article.title);
-  if (mirrors.ok === true) return mirrors;
-  return { ok: false };
-}
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "articles.json");
@@ -203,7 +193,7 @@ async function applyArchiveChecks(articles) {
     paid,
     ARCHIVE_PROBE_CONCURRENCY,
     ARCHIVE_PROBE_DELAY_MS,
-    (article) => resolvePaywallRead(article),
+    (article) => probeArchiveIs(article.url),
   );
 
   let verified = 0;
@@ -222,7 +212,7 @@ async function applyArchiveChecks(articles) {
           snapshotUrl: hit.snapshotUrl,
         });
       }
-      if (ARCHIVE_VERIFY) {
+      if (ARCHIVE_VERIFY && hit.ok === false) {
         dropped++;
         return null;
       }
@@ -232,7 +222,7 @@ async function applyArchiveChecks(articles) {
 
   if (ARCHIVE_VERIFY) {
     console.log(
-      `Paywall verify: ${verified} with mirror, ${dropped} hidden (no working mirror), ${out.filter((a) => a.free).length} free`,
+      `archive.is verify: ${verified} kept, ${dropped} hidden (no snapshot), ${out.filter((a) => a.free).length} free`,
     );
   } else if (ARCHIVE_ENRICH) {
     console.log(`archive.is enrich: ${verified} snapshots for ${paid.length} paywalled items`);
