@@ -159,13 +159,15 @@ function normalizeArticle(a) {
 
 function withLinks(a) {
   const free = isFreeArticle(a);
-  const archiveUrl = a.snapshotUrl ?? BYPASS_PREFIX + a.url;
+  const archiveUrl =
+    a.snapshotUrl && /^https:\/\/archive\.[a-z]+\//i.test(a.snapshotUrl)
+      ? a.snapshotUrl
+      : BYPASS_PREFIX + a.url;
   return {
     ...a,
     free,
     archiveUrl,
     saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
-    readerUrl: free ? undefined : `https://smry.ai/${a.url}`,
     readUrl: free ? a.url : archiveUrl,
   };
 }
