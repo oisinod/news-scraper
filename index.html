@@ -202,6 +202,11 @@
         background: #006994;
         color: #fff;
       }
+      .title,
+      .thumb-wrap {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 105, 148, 0.2);
+      }
       .title {
         display: block;
         color: inherit;
@@ -322,6 +327,20 @@
         if (!iso) return "";
         const d = new Date(iso);
         return Number.isNaN(d.getTime()) ? "" : timeFmt.format(d);
+      }
+
+      /** iOS PWA often ignores target="_blank"; open explicitly with fallback. */
+      function openExternal(href) {
+        try {
+          const w = window.open(href, "_blank", "noopener,noreferrer");
+          if (w) {
+            w.opener = null;
+            return;
+          }
+        } catch {
+          /* standalone web app */
+        }
+        window.location.assign(href);
       }
 
       function articleSource(a) {
@@ -585,6 +604,19 @@
 
       refreshBtn.addEventListener("click", () => loadArticles({ force: true }));
 
+      feedEl.addEventListener(
+        "click",
+        (e) => {
+          const link = e.target.closest("a[href]");
+          if (!link || !feedEl.contains(link)) return;
+          const href = link.getAttribute("href");
+          if (!href || !/^https?:/i.test(href)) return;
+          e.preventDefault();
+          openExternal(href);
+        },
+        true,
+      );
+
       let ptrStartY = 0;
       let ptrPull = 0;
       let ptrActive = false;
@@ -594,6 +626,7 @@
         "touchstart",
         (e) => {
           if (window.scrollY > 4 || refreshBtn.disabled) return;
+          if (e.target.closest("a, button")) return;
           ptrStartY = e.touches[0].clientY;
           ptrActive = true;
         },
