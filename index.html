@@ -329,25 +329,78 @@
         return Number.isNaN(d.getTime()) ? "" : timeFmt.format(d);
       }
 
-      function needsOpenLauncher() {
+      /** Home-screen / installed app only (not mobile Chrome in a normal tab). */
+      function isInstalledApp() {
         return (
-          window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
           window.matchMedia("(display-mode: standalone)").matches ||
           navigator.standalone === true
         );
       }
 
+      function pickReadUrl(a) {
+        if (a.free) return a.readUrl || a.url;
+        const preferReader =
+          a.readerUrl ||
+          (a.url ? `https://smry.ai/${a.url}` : "") ||
+          a.snapshotUrl ||
+          a.readUrl ||
+          a.url;
+        if (isInstalledApp()) return preferReader;
+        if (!a.snapshotUrl && preferReader.startsWith("https://smry.ai/")) return preferReader;
+        return a.readUrl || a.snapshotUrl || preferReader || a.url;
+      }
+
       function articleOpenUrl(a) {
         if (a.free) return a.readUrl || a.url;
-        if (!needsOpenLauncher()) return a.readUrl || a.url;
+        if (!isInstalledApp()) return pickReadUrl(a);
         const mirror = a.snapshotUrl || a.readUrl || a.archiveUrl || "";
         const orig = a.url || "";
         const save = a.saveUrl || "";
+        const reader = a.readerUrl || (orig ? `https://smry.ai/${orig}` : "");
         const p = new URLSearchParams();
         if (mirror) p.set("m", mirror);
         if (orig) p.set("o", orig);
         if (save) p.set("s", save);
+        if (reader) p.set("r", reader);
         return assetUrl(`open.html?${p.toString()}`);
+      }
+
+      function linkTargetForArticle(a) {
+        if (isInstalledApp() && !a.free) return "_self";
+        return "_blank";
+      }
+
+      function openAway(url) {
+        try {
+          const w = window.open(url, "_blank", "noopener,noreferrer");
+          if (w) {
+            w.opener = null;
+            return true;
+          }
+        } catch {
+          /* ignore */
+        }
+        return false;
+      }
+
+      function bindExternalOpen(el) {
+        if (!isInstalledApp()) return;
+        el.addEventListener("click", (e) => {
+          const url = el.href;
+          if (!url?.startsWith("http")) return;
+          try {
+            if (new URL(url).origin === location.origin) return;
+          } catch {
+            return;
+          }
+          e.preventDefault();
+          if (!openAway(url)) {
+            feedEl.insertAdjacentHTML(
+              "afterbegin",
+              '<p class="empty">Link konnte nicht geöffnet werden. Bitte in Safari/Chrome öffnen.</p>',
+            );
+          }
+        });
       }
 
       function articleSource(a) {
@@ -455,7 +508,7 @@
           const wrap = document.createElement("a");
           wrap.className = "thumb-wrap";
           wrap.href = articleOpenUrl(a);
-          wrap.target = "_blank";
+          wrap.target = linkTargetForArticle(a);
           wrap.rel = "noopener noreferrer";
           const thumb = document.createElement("img");
           thumb.className = "thumb";
@@ -508,7 +561,7 @@
         link.className = "title";
         const dest = articleOpenUrl(a);
         link.href = dest;
-        link.target = a.free || !needsOpenLauncher() ? "_blank" : "_self";
+        link.target = linkTargetForArticle(a);
         link.rel = "noopener noreferrer";
         link.textContent = a.title;
 
@@ -526,9 +579,10 @@
         for (const [label, href] of extras) {
           const x = document.createElement("a");
           x.href = href;
-          x.target = "_blank";
+          x.target = linkTargetForArticle(a);
           x.rel = "noopener noreferrer";
           x.textContent = label;
+          bindExternalOpen(x);
           sub.append(x);
         }
 
@@ -654,8 +708,23 @@
       if ("serviceWorker" in navigator) {
         const basePath = location.pathname.replace(/\/index\.html$/, "").replace(/\/?$/, "/");
         const registerSw = () => {
-          navigator.serviceWorker.register(`${basePath}sw.js`, { scope: basePath }).catch(() => {});
+          navigator.serviceWorker
+            .register(`${basePath}sw.js`, { scope: basePath })
+            .then((reg) => {
+              reg.addEventListener("updatefound", () => {
+                const nw = reg.installing;
+                nw?.addEventListener("statechange", () => {
+                  if (nw.state === "installed" && navigator.serviceWorker.controller) {
+                    location.reload();
+                  }
+                });
+              });
+            })
+            .catch(() => {});
         };
+        navigator.serviceWorker.addEventListener("message", (e) => {
+          if (e.data?.type === "SW_UPDATED") location.reload();
+        });
         if (document.readyState === "complete") registerSw();
         else window.addEventListener("load", registerSw, { once: true });
       }

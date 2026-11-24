@@ -165,6 +165,7 @@ function withLinks(a) {
     free,
     archiveUrl,
     saveUrl: SAVE_PREFIX + encodeURIComponent(a.url),
+    readerUrl: free ? undefined : `https://smry.ai/${a.url}`,
     readUrl: free ? a.url : archiveUrl,
   };
 }
@@ -181,6 +182,7 @@ function stripDerived(a) {
   delete copy.archiveUrl;
   delete copy.saveUrl;
   delete copy.readUrl;
+  delete copy.readerUrl;
   return copy;
 }
 

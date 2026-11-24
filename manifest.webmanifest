@@ -2,7 +2,7 @@
   "name": "ZEIT & KSTA Schlagzeilen",
   "short_name": "Schlagzeilen",
   "description": "Tagesübersicht ZEIT und Kölner Stadt-Anzeiger",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
