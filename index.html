@@ -318,6 +318,12 @@
         return new URL(path, `${location.origin}${basePath}`).href;
       }
 
+      function fmtDate(iso) {
+        if (!iso) return "";
+        const d = new Date(iso);
+        return Number.isNaN(d.getTime()) ? "" : timeFmt.format(d);
+      }
+
       function articleSource(a) {
         if (a.source && sources[a.source]) return a.source;
         try {
@@ -417,6 +423,7 @@
         li.className = "card" + (a.image ? " has-thumb" : "") + (srcId === "ksta" ? " src-ksta" : "");
         const body = document.createElement("div");
         const src = sources[articleSource(a)] ?? sources.zeit;
+        if (!src) return li;
 
         if (a.image) {
           const wrap = document.createElement("a");
@@ -468,7 +475,7 @@
         }
         const time = document.createElement("span");
         time.className = "meta";
-        if (a.publishedAt) time.textContent = timeFmt.format(new Date(a.publishedAt));
+        if (a.publishedAt) time.textContent = fmtDate(a.publishedAt);
         top.append(time);
 
         const link = document.createElement("a");
@@ -509,7 +516,10 @@
         return li;
       }
 
+      let renderGen = 0;
+
       function renderFeed() {
+        const gen = ++renderGen;
         const shown = byTime();
         feedEl.replaceChildren();
         if (!shown.length) {
@@ -517,17 +527,27 @@
           return;
         }
         let lastDay = "";
-        for (const a of shown) {
-          const day = dayHeading(a.publishedAt);
-          if (day !== lastDay) {
-            lastDay = day;
-            const h = document.createElement("h2");
-            h.className = "day-label";
-            h.textContent = day;
-            feedEl.append(h);
+        let i = 0;
+        const batch = 35;
+
+        const step = () => {
+          if (gen !== renderGen) return;
+          const end = Math.min(i + batch, shown.length);
+          for (; i < end; i++) {
+            const a = shown[i];
+            const day = dayHeading(a.publishedAt);
+            if (day !== lastDay) {
+              lastDay = day;
+              const h = document.createElement("h2");
+              h.className = "day-label";
+              h.textContent = day;
+              feedEl.append(h);
+            }
+            feedEl.append(buildCard(a));
           }
-          feedEl.append(buildCard(a));
-        }
+          if (i < shown.length) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
       }
 
       async function loadArticles({ force = false } = {}) {
@@ -550,10 +570,12 @@
             Object.entries(data.sources ?? {}).map(([id, s]) => [id, { ...s, logo: assetUrl(s.logo) }]),
           );
           articles = data.articles ?? [];
-          updatedEl.textContent = "Aktualisiert: " + timeFmt.format(new Date(data.updatedAt));
+          updatedEl.textContent = "Aktualisiert: " + fmtDate(data.updatedAt);
           renderFeed();
-        } catch {
-          feedEl.innerHTML = '<p class="empty">Artikel konnten nicht geladen werden.</p>';
+        } catch (err) {
+          console.error(err);
+          feedEl.innerHTML =
+            '<p class="empty">Artikel konnten nicht geladen werden. Bitte neu laden.</p>';
         } finally {
           feedEl.setAttribute("aria-busy", "false");
           refreshBtn.disabled = false;
@@ -603,7 +625,11 @@
 
       if ("serviceWorker" in navigator) {
         const basePath = location.pathname.replace(/\/index\.html$/, "").replace(/\/?$/, "/");
-        navigator.serviceWorker.register(`${basePath}sw.js`, { scope: basePath }).catch(() => {});
+        const registerSw = () => {
+          navigator.serviceWorker.register(`${basePath}sw.js`, { scope: basePath }).catch(() => {});
+        };
+        if (document.readyState === "complete") registerSw();
+        else window.addEventListener("load", registerSw, { once: true });
       }
     </script>
   </body>
